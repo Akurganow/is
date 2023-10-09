@@ -1,5 +1,7 @@
-import isFunction from '../src/utils/is-function'
-import isPromise from '../src/utils/is-promise'
+import {
+	isFunction,
+	isPromise
+} from '../src'
 
 describe('isFunction', () => { tests('function', isFunction) })
 describe('isPromise', () => { tests('promise', isPromise) })

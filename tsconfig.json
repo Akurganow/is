@@ -10,11 +10,6 @@
 		"baseUrl": ".",
 		"rootDir": "./src",
 		"moduleResolution": "node16",
-		"paths": {
-			"utils/*": [
-				"./src/utils/*"
-			]
-		},
 
 		/* JavaScript Support */
 		"allowJs": false,
