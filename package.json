@@ -14,7 +14,7 @@
 		"lint": "eslint ./src/**/*.ts",
 		"test": "jest",
 		"build": "tsc",
-		"release": "npm run lint && npm run test && npm run build && dotenv release-it"
+		"release": "dotenv release-it"
 	},
 	"repository": {
 		"type": "git",
@@ -24,7 +24,8 @@
 		"hooks": {
 			"before:init": [
 				"npm run lint",
-				"npm test"
+				"npm test",
+				"npm run build"
 			],
 			"after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
 		},
