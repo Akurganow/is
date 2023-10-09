@@ -2,11 +2,13 @@ import {
 	isFunction,
 	isPromise,
 	isAsyncFunction,
+	isObject,
 } from '../src'
 
 describe('isFunction', () => { tests('function', isFunction) })
 describe('isAsyncFunction', () => { tests('asyncfunction', isAsyncFunction) })
 describe('isPromise', () => { tests('promise', isPromise) })
+describe('isObject', () => { tests('object', isObject) })
 
 function tests (truthy: string, fn: (value: unknown) => boolean) {
 	test('function', () => {
