@@ -61,7 +61,7 @@ npm install
 
 We use [ESLint](https://eslint.org/) and [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin) to lint our code.
 </br>
-Check out [.eslintrc.json](https://github.com/Akurganow/array-functions/blob/main/.eslintrc.json)
+Check out [.eslintrc.json](https://github.com/Akurganow/is/blob/main/.eslintrc.json)
 
 ```bash
 npm run lint
