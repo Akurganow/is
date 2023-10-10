@@ -232,6 +232,28 @@ console.log(isMap(new Map())) // Output: true
 console.log(isMap([])) // Output: false
 ```
 
+### `isWeakSet`
+
+Checks if a given value is a WeakSet.
+
+```javascript
+import { isWeakSet } from '@plq/is'
+
+console.log(isWeakSet(new WeakSet())) // Output: true
+console.log(isWeakSet([])) // Output: false
+```
+
+### `isWeakMap`
+
+Checks if a given value is a WeakMap.
+
+```javascript
+import { isWeakMap } from '@plq/is'
+
+console.log(isWeakMap(new WeakMap())) // Output: true
+console.log(isWeakMap([])) // Output: false
+```
+
 ### `isError`
 
 Checks if a given value is an error.

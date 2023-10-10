@@ -14,6 +14,8 @@ import {
 	isRegexp,
 	isDate,
 	isError,
+	isWeakmap,
+	isWeakset,
 	isSet,
 	isMap,
 } from '../src'
@@ -35,6 +37,8 @@ describe('isString', () => { tests('string', isString) })
 describe('isBoolean', () => { tests('boolean', isBoolean) })
 describe('isUndefined', () => { tests('undefined', isUndefined) })
 describe('isNull', () => { tests('null', isNull) })
+describe('isWeakmap', () => { tests('weakmap', isWeakmap) })
+describe('isWeakset', () => { tests('weakset', isWeakset) })
 
 function tests (truthy: string, fn: (value: unknown) => boolean) {
 	test('function', () => {
