@@ -63,6 +63,18 @@ console.log(isPromise(Promise.resolve())) // Output: true
 console.log(isPromise(async () => {})) // Output: false
 ```
 
+### `isPromiseLike`
+
+Checks if a given value is a Promise-like.
+
+```javascript
+import { isPromiseLike } from '@plq/is'
+
+console.log(isPromiseLike(Promise.resolve())) // Output: true
+console.log(isPromiseLike({ then: () => {} })) // Output: true
+console.log(isPromiseLike(async () => {})) // Output: false
+```
+
 ### `isArray`
 
 Checks if a given value is an array.
