@@ -425,6 +425,21 @@ console.log(isClass(new Test())) // Output: false
 console.log(isClass(() => {})) // Output: false
 ```
 
+### `isArguments`
+
+Checks if a given value is an arguments object.
+
+```javascript
+import { isArguments } from '@plq/is'
+
+const args = (function() {
+	return arguments
+})()
+
+console.log(isArguments(args)) // Output: true
+console.log(isArguments([])) // Output: false
+```
+
 ## Development
 
 ### Install dependencies
