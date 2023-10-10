@@ -49,6 +49,17 @@ console.log(isObject({})) // Output: true
 console.log(isObject(() => {})) // Output: false
 ```
 
+### `isNull`
+
+Checks if a given value is null.
+
+```javascript
+import { isNull } from '@plq/is'
+
+console.log(isNull(null)) // Output: true
+console.log(isNull(undefined)) // Output: false
+```
+
 ## Development
 
 ### Install dependencies

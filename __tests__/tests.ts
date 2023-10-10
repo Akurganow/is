@@ -3,12 +3,14 @@ import {
 	isPromise,
 	isAsyncFunction,
 	isObject,
+	isNull,
 } from '../src'
 
 describe('isFunction', () => { tests('function', isFunction) })
 describe('isAsyncFunction', () => { tests('asyncfunction', isAsyncFunction) })
 describe('isPromise', () => { tests('promise', isPromise) })
 describe('isObject', () => { tests('object', isObject) })
+describe('isNull', () => { tests('null', isNull) })
 
 function tests (truthy: string, fn: (value: unknown) => boolean) {
 	test('function', () => {
@@ -104,13 +106,11 @@ function tests (truthy: string, fn: (value: unknown) => boolean) {
 	test('promise', () => {
 		expect(fn(Promise.resolve())).toBe(truthy === 'promise')
 	})
-	test('generator', () => {
-		expect(fn(function * () {})).toBe(truthy === 'generator')
+	test('generatorFunction', () => {
+		console.log('generatorFunction', truthy)
+		expect(fn(function * () {})).toBe(truthy === 'generatorFunction')
 	})
-	test('generatorfunction', () => {
-		expect(fn(function * () {})).toBe(truthy === 'generatorfunction')
-	})
-	test('asyncfunction', () => {
-		expect(fn(async () => {})).toBe(truthy === 'asyncfunction')
+	test('asyncFunction', () => {
+		expect(fn(async () => {})).toBe(truthy === 'asyncFunction')
 	})
 }
