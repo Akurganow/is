@@ -411,6 +411,20 @@ console.log(isEmptyMap(new Map())) // Output: true
 console.log(isEmptyMap(new Map([['a', 1]]))) // Output: false
 ```
 
+### `isClass`
+
+Checks if a given value is a class.
+
+```javascript
+import { isClass } from '@plq/is'
+
+class Test {}
+
+console.log(isClass(Test)) // Output: true
+console.log(isClass(new Test())) // Output: false
+console.log(isClass(() => {})) // Output: false
+```
+
 ## Development
 
 ### Install dependencies
