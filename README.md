@@ -321,6 +321,23 @@ console.log(isAsyncIterable(async function* () {})) // Output: true
 console.log(isAsyncIterable([])) // Output: false
 ```
 
+### `isPrimitive`
+
+Checks if a given value is a primitive.
+
+```javascript
+import { isPrimitive } from '@plq/is'
+
+console.log(isPrimitive('')) // Output: true
+console.log(isPrimitive(1)) // Output: true
+console.log(isPrimitive(true)) // Output: true
+console.log(isPrimitive(Symbol())) // Output: true
+console.log(isPrimitive(null)) // Output: true
+console.log(isPrimitive(undefined)) // Output: true
+console.log(isPrimitive({})) // Output: false
+console.log(isPrimitive([])) // Output: false
+```
+
 ## Development
 
 ### Install dependencies
