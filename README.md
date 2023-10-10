@@ -60,6 +60,17 @@ console.log(isNull(null)) // Output: true
 console.log(isNull(undefined)) // Output: false
 ```
 
+### `isString`
+
+Checks if a given value is a string.
+
+```javascript
+import { isString } from '@plq/is'
+
+console.log(isString('')) // Output: true
+console.log(isString(1)) // Output: false
+```
+
 ## Development
 
 ### Install dependencies

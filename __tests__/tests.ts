@@ -3,6 +3,7 @@ import {
 	isPromise,
 	isAsyncFunction,
 	isObject,
+	isString,
 	isNull,
 } from '../src'
 
@@ -10,6 +11,7 @@ describe('isFunction', () => { tests('function', isFunction) })
 describe('isAsyncFunction', () => { tests('asyncfunction', isAsyncFunction) })
 describe('isPromise', () => { tests('promise', isPromise) })
 describe('isObject', () => { tests('object', isObject) })
+describe('isString', () => { tests('string', isString) })
 describe('isNull', () => { tests('null', isNull) })
 
 function tests (truthy: string, fn: (value: unknown) => boolean) {
