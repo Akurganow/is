@@ -100,6 +100,19 @@ console.log(isArray([])) // Output: true
 console.log(isArray({})) // Output: false
 ```
 
+### `isArrayOf`
+
+Checks if a given value is an array of a given type.
+
+```javascript
+import { isArrayOf } from '@plq/is'
+
+console.log(isArrayOf([], 'string')) // Output: false
+console.log(isArrayOf(['a', 'b', 'c'], 'string')) // Output: true
+console.log(isArrayOf(['a', 'b', 'c'], 'number')) // Output: false
+console.log(isArrayOf(['a', 'b', 3], 'string')) // Output: false
+```
+
 ### `isObject`
 
 Checks if a given value is an object.
