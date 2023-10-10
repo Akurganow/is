@@ -153,6 +153,17 @@ console.log(isBoolean(false)) // Output: true
 console.log(isBoolean(1)) // Output: false
 ```
 
+### `isSymbol`
+
+Checks if a given value is a symbol.
+
+```javascript
+import { isSymbol } from '@plq/is'
+
+console.log(isSymbol(Symbol())) // Output: true
+console.log(isSymbol(1)) // Output: false
+```
+
 ### `isDate`
 
 Checks if a given value is a date.
