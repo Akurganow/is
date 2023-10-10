@@ -16,6 +16,7 @@ import {
 	isError,
 	isWeakmap,
 	isWeakset,
+	isDataView,
 	isGeneratorFunction,
 	isSet,
 	isMap,

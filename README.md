@@ -276,6 +276,17 @@ console.log(isError(new Error())) // Output: true
 console.log(isError('Error')) // Output: false
 ```
 
+### `isDataView`
+
+Checks if a given value is a DataView.
+
+```javascript
+import { isDataView } from '@plq/is'
+
+console.log(isDataView(new DataView(new ArrayBuffer(1)))) // Output: true
+console.log(isDataView([])) // Output: false
+```
+
 ## Development
 
 ### Install dependencies
