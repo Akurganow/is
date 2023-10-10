@@ -338,6 +338,79 @@ console.log(isPrimitive({})) // Output: false
 console.log(isPrimitive([])) // Output: false
 ```
 
+### `isEmpty`
+
+Checks if a given value is empty.
+
+```javascript
+import { isEmpty } from '@plq/is'
+
+console.log(isEmpty('')) // Output: true
+console.log(isEmpty(0)) // Output: false
+console.log(isEmpty(NaN)) // Output: true
+console.log(isEmpty([])) // Output: true
+console.log(isEmpty({})) // Output: true
+console.log(isEmpty(new Set())) // Output: true
+console.log(isEmpty(new Map())) // Output: true
+console.log(isEmpty(() => {})) // Output: false
+```
+
+### `isEmptyString`
+
+Checks if a given value is an empty string.
+
+```javascript
+import { isEmptyString } from '@plq/is'
+
+console.log(isEmptyString('')) // Output: true
+console.log(isEmptyString(' ')) // Output: false
+console.log(isEmptyString('test')) // Output: false
+```
+
+### `isEmptyArray`
+
+Checks if a given value is an empty array.
+
+```javascript
+import { isEmptyArray } from '@plq/is'
+
+console.log(isEmptyArray([])) // Output: true
+console.log(isEmptyArray([1])) // Output: false
+```
+
+### `isEmptyObject`
+
+Checks if a given value is an empty object.
+
+```javascript
+import { isEmptyObject } from '@plq/is'
+
+console.log(isEmptyObject({})) // Output: true
+console.log(isEmptyObject({ a: 1 })) // Output: false
+```
+
+### `isEmptySet`
+
+Checks if a given value is an empty Set.
+
+```javascript
+import { isEmptySet } from '@plq/is'
+
+console.log(isEmptySet(new Set())) // Output: true
+console.log(isEmptySet(new Set([1]))) // Output: false
+```
+
+### `isEmptyMap`
+
+Checks if a given value is an empty Map.
+
+```javascript
+import { isEmptyMap } from '@plq/is'
+
+console.log(isEmptyMap(new Map())) // Output: true
+console.log(isEmptyMap(new Map([['a', 1]]))) // Output: false
+```
+
 ## Development
 
 ### Install dependencies
