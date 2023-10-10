@@ -8,8 +8,10 @@ import {
 	isBoolean,
 	isUndefined,
 	isNull,
+	isArray,
 } from '../src'
 
+describe('isArray', () => { tests('array', isArray) })
 describe('isFunction', () => { tests('function', isFunction) })
 describe('isAsyncFunction', () => { tests('asyncfunction', isAsyncFunction) })
 describe('isPromise', () => { tests('promise', isPromise) })

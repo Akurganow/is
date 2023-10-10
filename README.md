@@ -38,6 +38,17 @@ console.log(isPromise(Promise.resolve())) // Output: true
 console.log(isPromise(async () => {})) // Output: false
 ```
 
+### `isArray`
+
+Checks if a given value is an array.
+
+```javascript
+import { isArray } from '@plq/is'
+
+console.log(isArray([])) // Output: true
+console.log(isArray({})) // Output: false
+```
+
 ### `isObject`
 
 Checks if a given value is an object.
