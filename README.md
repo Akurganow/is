@@ -86,6 +86,18 @@ console.log(isObjectLike([])) // Output: true
 console.log(isObjectLike(() => {})) // Output: false
 ```
 
+### `isPlainObject`
+
+Checks if a given value is a plain object.
+
+```javascript
+import { isPlainObject } from '@plq/is'
+
+console.log(isPlainObject({})) // Output: true
+console.log(isPlainObject(Object.create(null))) // Output: true
+console.log(isPlainObject(() => {})) // Output: false
+```
+
 ### `isNull`
 
 Checks if a given value is null.
