@@ -299,6 +299,28 @@ console.log(isDataView(new DataView(new ArrayBuffer(1)))) // Output: true
 console.log(isDataView([])) // Output: false
 ```
 
+### `isIterable`
+
+Checks if a given value is iterable.
+
+```javascript
+import { isIterable } from '@plq/is'
+
+console.log(isIterable([])) // Output: true
+console.log(isIterable({})) // Output: false
+```
+
+### `isAsyncIterable`
+
+Checks if a given value is an async iterable.
+
+```javascript
+import { isAsyncIterable } from '@plq/is'
+
+console.log(isAsyncIterable(async function* () {})) // Output: true
+console.log(isAsyncIterable([])) // Output: false
+```
+
 ## Development
 
 ### Install dependencies
