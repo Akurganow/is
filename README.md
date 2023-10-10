@@ -71,6 +71,18 @@ console.log(isString('')) // Output: true
 console.log(isString(1)) // Output: false
 ```
 
+### `isNumber`
+
+Checks if a given value is a number.
+
+```javascript
+import { isNumber } from '@plq/is'
+
+console.log(isNumber(1)) // Output: true
+console.log(isNumber(NaN)) // Output: true
+console.log(isNumber('')) // Output: false
+```
+
 ## Development
 
 ### Install dependencies

@@ -3,6 +3,7 @@ import {
 	isPromise,
 	isAsyncFunction,
 	isObject,
+	isNumber,
 	isString,
 	isNull,
 } from '../src'
@@ -11,6 +12,7 @@ describe('isFunction', () => { tests('function', isFunction) })
 describe('isAsyncFunction', () => { tests('asyncfunction', isAsyncFunction) })
 describe('isPromise', () => { tests('promise', isPromise) })
 describe('isObject', () => { tests('object', isObject) })
+describe('isNumber', () => { tests('number', isNumber) })
 describe('isString', () => { tests('string', isString) })
 describe('isNull', () => { tests('null', isNull) })
 
