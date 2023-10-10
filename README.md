@@ -105,6 +105,17 @@ console.log(isNumber(NaN)) // Output: true
 console.log(isNumber('')) // Output: false
 ```
 
+### `isNaN`
+
+Checks if a given value is NaN.
+
+```javascript
+import { isNaN } from '@plq/is'
+
+console.log(isNaN(NaN)) // Output: true
+console.log(isNaN(1)) // Output: false
+```
+
 ### `isBoolean`
 
 Checks if a given value is a boolean.
