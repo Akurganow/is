@@ -17,6 +17,7 @@ describe('isObject', () => { tests('object', isObject) })
 describe('isNumber', () => { tests('number', isNumber) })
 describe('isString', () => { tests('string', isString) })
 describe('isBoolean', () => { tests('boolean', isBoolean) })
+describe('isUndefined', () => { tests('undefined', isUndefined) })
 describe('isNull', () => { tests('null', isNull) })
 
 function tests (truthy: string, fn: (value: unknown) => boolean) {

@@ -60,6 +60,17 @@ console.log(isNull(null)) // Output: true
 console.log(isNull(undefined)) // Output: false
 ```
 
+### `isUndefined`
+
+Checks if a given value is undefined.
+
+```javascript
+import { isUndefined } from '@plq/is'
+
+console.log(isUndefined(undefined)) // Output: true
+console.log(isUndefined(null)) // Output: false
+```
+
 ### `isString`
 
 Checks if a given value is a string.
