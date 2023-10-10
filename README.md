@@ -3,6 +3,20 @@ Small utility package that provides a set of functions to check if a given argum
 
 ## Functions
 
+### `detect`
+
+Returns the type of given value.
+
+```javascript
+import { detect } from '@plq/is'
+
+console.log(detect('')) // Output: 'string'
+console.log(detect(1)) // Output: 'number'
+console.log(detect(true)) // Output: 'boolean'
+console.log(detect({})) // Output: 'object'
+console.log(detect([])) // Output: 'array'
+```
+
 ### `getTag`
 
 Returns the tag of given value.

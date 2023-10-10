@@ -1,3 +1,4 @@
+export { default as detect } from './utils/detect'
 export { default as isString } from './utils/is-string'
 export { default as isNumber } from './utils/is-number'
 export { default as isBoolean } from './utils/is-boolean'
