@@ -3,6 +3,20 @@ Small utility package that provides a set of functions to check if a given argum
 
 ## Functions
 
+### `getTag`
+
+Returns the tag of given value.
+
+```javascript
+import { getTag } from '@plq/is'
+
+console.log(getTag('')) // Output: '[object String]'
+console.log(getTag(1)) // Output: '[object Number]'
+console.log(getTag(true)) // Output: '[object Boolean]'
+console.log(getTag({})) // Output: '[object Object]'
+console.log(getTag([])) // Output: '[object Array]'
+```
+
 ### `isFunction`
 
 Checks if a given value is a function.
