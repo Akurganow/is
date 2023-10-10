@@ -13,6 +13,7 @@ import {
 	isBigint,
 	isRegexp,
 	isDate,
+	isError,
 	isSet,
 	isMap,
 } from '../src'
@@ -24,6 +25,7 @@ describe('isSymbol', () => { tests('symbol', isSymbol) })
 describe('isBigint', () => { tests('bigint', isBigint) })
 describe('isRegexp', () => { tests('regexp', isRegexp) })
 describe('isDate', () => { tests('date', isDate) })
+describe('isError', () => { tests('error', isError) })
 describe('isFunction', () => { tests('function', isFunction) })
 describe('isAsyncFunction', () => { tests('asyncfunction', isAsyncFunction) })
 describe('isPromise', () => { tests('promise', isPromise) })

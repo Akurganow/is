@@ -232,6 +232,17 @@ console.log(isMap(new Map())) // Output: true
 console.log(isMap([])) // Output: false
 ```
 
+### `isError`
+
+Checks if a given value is an error.
+
+```javascript
+import { isError } from '@plq/is'
+
+console.log(isError(new Error())) // Output: true
+console.log(isError('Error')) // Output: false
+```
+
 ## Development
 
 ### Install dependencies
