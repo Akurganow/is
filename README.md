@@ -210,6 +210,28 @@ console.log(isRegExp(/test/)) // Output: true
 console.log(isRegExp('test')) // Output: false
 ```
 
+### `isSet`
+
+Checks if a given value is a Set.
+
+```javascript
+import { isSet } from '@plq/is'
+
+console.log(isSet(new Set())) // Output: true
+console.log(isSet([])) // Output: false
+```
+
+### `isMap`
+
+Checks if a given value is a Map.
+
+```javascript
+import { isMap } from '@plq/is'
+
+console.log(isMap(new Map())) // Output: true
+console.log(isMap([])) // Output: false
+```
+
 ## Development
 
 ### Install dependencies

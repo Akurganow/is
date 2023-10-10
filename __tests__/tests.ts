@@ -13,8 +13,12 @@ import {
 	isBigint,
 	isRegexp,
 	isDate,
+	isSet,
+	isMap,
 } from '../src'
 
+describe('isSet', () => { tests('set', isSet) })
+describe('isMap', () => { tests('map', isMap) })
 describe('isArray', () => { tests('array', isArray) })
 describe('isSymbol', () => { tests('symbol', isSymbol) })
 describe('isBigint', () => { tests('bigint', isBigint) })
