@@ -128,6 +128,17 @@ console.log(isBoolean(false)) // Output: true
 console.log(isBoolean(1)) // Output: false
 ```
 
+### `isDate`
+
+Checks if a given value is a date.
+
+```javascript
+import { isDate } from '@plq/is'
+
+console.log(isDate(new Date())) // Output: true
+console.log(isDate('2021-01-01')) // Output: false
+```
+
 ## Development
 
 ### Install dependencies

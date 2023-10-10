@@ -9,9 +9,11 @@ import {
 	isUndefined,
 	isNull,
 	isArray,
+	isDate,
 } from '../src'
 
 describe('isArray', () => { tests('array', isArray) })
+describe('isDate', () => { tests('date', isDate) })
 describe('isFunction', () => { tests('function', isFunction) })
 describe('isAsyncFunction', () => { tests('asyncfunction', isAsyncFunction) })
 describe('isPromise', () => { tests('promise', isPromise) })
