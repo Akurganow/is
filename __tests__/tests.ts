@@ -159,7 +159,6 @@ function tests (truthy: string, fn: (value: unknown) => boolean) {
 		expect(fn(Promise.resolve())).toBe(truthy === 'promise')
 	})
 	test('generatorFunction', () => {
-		console.log('generatorFunction', truthy)
 		expect(fn(function * () {})).toBe(truthy === 'generatorFunction')
 	})
 	test('asyncFunction', () => {
