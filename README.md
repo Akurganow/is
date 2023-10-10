@@ -139,6 +139,17 @@ console.log(isDate(new Date())) // Output: true
 console.log(isDate('2021-01-01')) // Output: false
 ```
 
+### `isRegExp`
+
+Checks if a given value is a regular expression.
+
+```javascript
+import { isRegExp } from '@plq/is'
+
+console.log(isRegExp(/test/)) // Output: true
+console.log(isRegExp('test')) // Output: false
+```
+
 ## Development
 
 ### Install dependencies

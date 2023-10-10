@@ -9,6 +9,7 @@ import {
 	isUndefined,
 	isNull,
 	isArray,
+	isRegexp,
 	isDate,
 } from '../src'
 
