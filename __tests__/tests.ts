@@ -16,6 +16,7 @@ import {
 	isError,
 	isWeakmap,
 	isWeakset,
+	isGeneratorFunction,
 	isSet,
 	isMap,
 } from '../src'
@@ -29,7 +30,7 @@ describe('isRegexp', () => { tests('regexp', isRegexp) })
 describe('isDate', () => { tests('date', isDate) })
 describe('isError', () => { tests('error', isError) })
 describe('isFunction', () => { tests('function', isFunction) })
-describe('isAsyncFunction', () => { tests('asyncfunction', isAsyncFunction) })
+describe('isAsyncFunction', () => { tests('asyncFunction', isAsyncFunction) })
 describe('isPromise', () => { tests('promise', isPromise) })
 describe('isObject', () => { tests('object', isObject) })
 describe('isNumber', () => { tests('number', isNumber) })
@@ -37,6 +38,7 @@ describe('isString', () => { tests('string', isString) })
 describe('isBoolean', () => { tests('boolean', isBoolean) })
 describe('isUndefined', () => { tests('undefined', isUndefined) })
 describe('isNull', () => { tests('null', isNull) })
+describe('isGeneratorFunction', () => { tests('generatorFunction', isGeneratorFunction) })
 describe('isWeakmap', () => { tests('weakmap', isWeakmap) })
 describe('isWeakset', () => { tests('weakset', isWeakset) })
 

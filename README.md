@@ -41,6 +41,17 @@ console.log(isAsyncFunction(async () => {})) // Output: true
 console.log(isAsyncFunction(() => {})) // Output: false
 ```
 
+### `isGeneratorFunction`
+
+Checks if a given value is a generator function.
+
+```javascript
+import { isGeneratorFunction } from '@plq/is'
+
+console.log(isGeneratorFunction(function* () {})) // Output: true
+console.log(isGeneratorFunction(() => {})) // Output: false
+```
+
 ### `isPromise`
 
 Checks if a given value is a Promise.
