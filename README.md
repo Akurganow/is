@@ -74,6 +74,18 @@ console.log(isObject({})) // Output: true
 console.log(isObject(() => {})) // Output: false
 ```
 
+### isObjectLike
+
+Checks if a given value is an object-like.
+
+```javascript
+import { isObjectLike } from '@plq/is'
+
+console.log(isObjectLike({})) // Output: true
+console.log(isObjectLike([])) // Output: true
+console.log(isObjectLike(() => {})) // Output: false
+```
+
 ### `isNull`
 
 Checks if a given value is null.
