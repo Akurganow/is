@@ -9,11 +9,13 @@ import {
 	isUndefined,
 	isNull,
 	isArray,
+	isBigint,
 	isRegexp,
 	isDate,
 } from '../src'
 
 describe('isArray', () => { tests('array', isArray) })
+describe('isBigint', () => { tests('bigint', isBigint) })
 describe('isDate', () => { tests('date', isDate) })
 describe('isFunction', () => { tests('function', isFunction) })
 describe('isAsyncFunction', () => { tests('asyncfunction', isAsyncFunction) })

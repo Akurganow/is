@@ -116,6 +116,17 @@ console.log(isNaN(NaN)) // Output: true
 console.log(isNaN(1)) // Output: false
 ```
 
+### `isBigInt`
+
+Checks if a given value is a BigInt.
+
+```javascript
+import { isBigInt } from '@plq/is'
+
+console.log(isBigInt(BigInt(1))) // Output: true
+console.log(isBigInt(1)) // Output: false
+```
+
 ### `isBoolean`
 
 Checks if a given value is a boolean.
