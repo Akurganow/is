@@ -5,6 +5,8 @@ import {
 	isObject,
 	isNumber,
 	isString,
+	isBoolean,
+	isUndefined,
 	isNull,
 } from '../src'
 
@@ -14,6 +16,7 @@ describe('isPromise', () => { tests('promise', isPromise) })
 describe('isObject', () => { tests('object', isObject) })
 describe('isNumber', () => { tests('number', isNumber) })
 describe('isString', () => { tests('string', isString) })
+describe('isBoolean', () => { tests('boolean', isBoolean) })
 describe('isNull', () => { tests('null', isNull) })
 
 function tests (truthy: string, fn: (value: unknown) => boolean) {

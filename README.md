@@ -83,6 +83,18 @@ console.log(isNumber(NaN)) // Output: true
 console.log(isNumber('')) // Output: false
 ```
 
+### `isBoolean`
+
+Checks if a given value is a boolean.
+
+```javascript
+import { isBoolean } from '@plq/is'
+
+console.log(isBoolean(true)) // Output: true
+console.log(isBoolean(false)) // Output: true
+console.log(isBoolean(1)) // Output: false
+```
+
 ## Development
 
 ### Install dependencies
