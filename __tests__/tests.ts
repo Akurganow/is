@@ -16,6 +16,16 @@ import {
 	isError,
 	isWeakmap,
 	isWeakset,
+	isInt8array,
+	isUint8array,
+	isUint8clampedarray,
+	isInt16array,
+	isUint16array,
+	isInt32array,
+	isUint32array,
+	isFloat32array,
+	isFloat64array,
+	isArraybuffer,
 	isDataView,
 	isGeneratorFunction,
 	isSet,
@@ -39,6 +49,17 @@ describe('isString', () => { tests('string', isString) })
 describe('isBoolean', () => { tests('boolean', isBoolean) })
 describe('isUndefined', () => { tests('undefined', isUndefined) })
 describe('isNull', () => { tests('null', isNull) })
+describe('isInt8array', () => { tests('int8array', isInt8array) })
+describe('isUint8array', () => { tests('uint8array', isUint8array) })
+describe('isUint8clampedarray', () => { tests('uint8clampedarray', isUint8clampedarray) })
+describe('isInt16array', () => { tests('int16array', isInt16array) })
+describe('isUint16array', () => { tests('uint16array', isUint16array) })
+describe('isInt32array', () => { tests('int32array', isInt32array) })
+describe('isUint32array', () => { tests('uint32array', isUint32array) })
+describe('isFloat32array', () => { tests('float32array', isFloat32array) })
+describe('isFloat64array', () => { tests('float64array', isFloat64array) })
+describe('isArraybuffer', () => { tests('arraybuffer', isArraybuffer) })
+describe('isDataView', () => { tests('dataview', isDataView) })
 describe('isGeneratorFunction', () => { tests('generatorFunction', isGeneratorFunction) })
 describe('isWeakmap', () => { tests('weakmap', isWeakmap) })
 describe('isWeakset', () => { tests('weakset', isWeakset) })
