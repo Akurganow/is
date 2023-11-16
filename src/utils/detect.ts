@@ -72,6 +72,12 @@ export const types = {
 	class: isClass,
 }
 
+/**
+ * Detects the type of the given value.
+ *
+ * @param {unknown} value - The value to check.
+ * @returns {string | undefined} The type of the value, or undefined if the type could not be determined.
+ */
 export default function detect(value: unknown): string | undefined {
 	const currentType = Object.entries(types).find(([type, check]) => type && check(value))
 
