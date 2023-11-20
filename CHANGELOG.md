@@ -1,5 +1,12 @@
 
 
+## [1.6.0](https://github.com/Akurganow/is/compare/v1.5.0...v1.6.0) (2023-11-20)
+
+
+### Features
+
+* **detect:** use getTag function to simplify type detection ([d66e6a6](https://github.com/Akurganow/is/commit/d66e6a6459f7c9b3c37b04174cefecbb955a1d4d))
+
 ## [1.5.0](https://github.com/Akurganow/is/compare/v1.4.0...v1.5.0) (2023-11-20)
 
 
