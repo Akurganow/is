@@ -19,7 +19,12 @@ export default function isPlainObject<V = unknown>(obj: unknown): obj is Record<
 	
 	const prototype = Object.getPrototypeOf(obj)
 
+	const nonEnumerableProperties = Object.getOwnPropertyNames(obj).filter(
+		(prop) => !Object.prototype.propertyIsEnumerable.call(obj, prop)
+	)
+
 	return (prototype === null || prototype === Object.prototype || Object.getPrototypeOf(prototype) === null)
 		&& !(Symbol.toStringTag in obj)
 		&& !(Symbol.iterator in obj)
+		&& nonEnumerableProperties.length === 0
 }
