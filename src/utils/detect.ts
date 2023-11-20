@@ -34,43 +34,43 @@ import isGeneratorFunction from './is-generator-function'
 import isArguments from './is-arguments'
 import isClass from './is-class'
 
-export const types = {
-	string: isString,
-	number: isNumber,
-	function: isFunction,
-	object: isObject,
-	boolean: isBoolean,
-	undefined: isUndefined,
-	null: isNull,
-	array: isArray,
-	symbol: isSymbol,
-	bigint: isBigint,
-	regexp: isRegexp,
-	date: isDate,
-	error: isError,
-	map: isMap,
-	set: isSet,
-	weakmap: isWeakmap,
-	weakset: isWeakset,
-	int8array: isInt8array,
-	uint8array: isUint8array,
-	uint8clampedarray: isUint8clampedarray,
-	int16array: isInt16array,
-	uint16array: isUint16array,
-	int32array: isInt32array,
-	uint32array: isUint32array,
-	float32array: isFloat32array,
-	float64array: isFloat64array,
-	bigint64array: isBigint64array,
-	biguint64array: isBiguint64array,
-	arraybuffer: isArraybuffer,
-	dataView: isDataView,
-	promise: isPromise,
-	asyncFunction: isAsyncFunction,
-	generatorFunction: isGeneratorFunction,
-	arguments: isArguments,
-	class: isClass,
-}
+const types = new Map([
+	['string', isString],
+	['number', isNumber],
+	['function', isFunction],
+	['object', isObject],
+	['boolean', isBoolean],
+	['undefined', isUndefined],
+	['null', isNull],
+	['array', isArray],
+	['symbol', isSymbol],
+	['bigint', isBigint],
+	['regexp', isRegexp],
+	['date', isDate],
+	['error', isError],
+	['map', isMap],
+	['set', isSet],
+	['weakmap', isWeakmap],
+	['weakset', isWeakset],
+	['int8array', isInt8array],
+	['uint8array', isUint8array],
+	['uint8clampedarray', isUint8clampedarray],
+	['int16array', isInt16array],
+	['uint16array', isUint16array],
+	['int32array', isInt32array],
+	['uint32array', isUint32array],
+	['float32array', isFloat32array],
+	['float64array', isFloat64array],
+	['bigint64array', isBigint64array],
+	['biguint64array', isBiguint64array],
+	['arraybuffer', isArraybuffer],
+	['dataView', isDataView],
+	['promise', isPromise],
+	['asyncFunction', isAsyncFunction],
+	['generatorFunction', isGeneratorFunction],
+	['arguments', isArguments],
+	['class', isClass],
+])
 
 /**
  * Detects the type of the given value.
@@ -79,7 +79,11 @@ export const types = {
  * @returns {string | undefined} The type of the value, or undefined if the type could not be determined.
  */
 export default function detect(value: unknown): string | undefined {
-	const currentType = Object.entries(types).find(([type, check]) => type && check(value))
+	for (const [type, check] of types) {
+		if (check(value)) {
+			return type
+		}
+	}
 
-	return currentType?.[0]
+	return undefined
 }
