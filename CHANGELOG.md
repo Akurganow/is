@@ -1,5 +1,20 @@
 
 
+## [1.5.0](https://github.com/Akurganow/is/compare/v1.4.0...v1.5.0) (2023-11-20)
+
+
+### Features
+
+* **is-plain-object:** Check if the object has any non-enumerable properties ([ce5ec38](https://github.com/Akurganow/is/commit/ce5ec38613afd8c10ef5b6e2a80b24d99d288215))
+
+
+### Bug Fixes
+
+* add isArrayOfSame to index.ts ([1ffc18e](https://github.com/Akurganow/is/commit/1ffc18ef99e95bf79e70fcdd3ea5721380e3c8cb))
+* **detect:** export types ([aa0d0d5](https://github.com/Akurganow/is/commit/aa0d0d58d72149b448ac2e0c0516ae1f91f9a924))
+* **isArrayOf:** use .some instead of .every ([b88500d](https://github.com/Akurganow/is/commit/b88500dda72e9428ac5bc22951f956d99faad95c))
+* **isGeneratorFunction:** remove console.log ([45a0d72](https://github.com/Akurganow/is/commit/45a0d72a90d74f9438a10e6777eef141dbe829ff))
+
 ## [1.4.0](https://github.com/Akurganow/is/compare/v1.3.0...v1.4.0) (2023-10-10)
 
 
