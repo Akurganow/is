@@ -8,7 +8,7 @@
  * For example, calling `getTag([])` returns `"[object Array]"` because `[]` is an array.
  * Calling `getTag(new Date())` returns `"[object Date]"` because `new Date()` creates a `Date` object.
  *
- * This function can be useful when you want to determine a more specific type of an object
+ * This function can be useful when you want to determine a more specific type of object
  * than what the `typeof` operator in JavaScript can offer.
  *
  * @param {unknown} value - The value to check.

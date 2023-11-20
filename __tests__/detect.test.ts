@@ -4,7 +4,7 @@ describe('detect', () => {
 	describe('string',() => tests('string'))
 	describe('number',() => tests('number'))
 	describe('function',() => tests('function'))
-	describe('generatorFunction',() => tests('generatorFunction'))
+	describe('generatorFunction',() => tests('generatorfunction'))
 	describe('asyncFunction',() => tests('asyncFunction'))
 	describe('object',() => tests('object'))
 	describe('boolean',() => tests('boolean'))
@@ -243,7 +243,7 @@ function tests (truthy: string) {
 		}
 	})
 	test('dataView', () => {
-		if (truthy === 'dataView') {
+		if (truthy === 'dataview') {
 			expect(detect(new DataView(new ArrayBuffer(2)))).toBe(truthy)
 		} else {
 			expect(detect(new DataView(new ArrayBuffer(2)))).not.toBe(truthy)
@@ -257,7 +257,7 @@ function tests (truthy: string) {
 		}
 	})
 	test('generatorFunction', () => {
-		if (truthy === 'generatorFunction') {
+		if (truthy === 'generatorfunction') {
 			expect(detect(function* () {
 			})).toBe(truthy)
 		} else {
@@ -266,7 +266,7 @@ function tests (truthy: string) {
 		}
 	})
 	test('asyncFunction', () => {
-		if (truthy === 'asyncFunction') {
+		if (truthy === 'asyncfunction') {
 			expect(detect(async () => {
 			})).toBe(truthy)
 		} else {
