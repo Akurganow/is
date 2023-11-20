@@ -34,7 +34,7 @@ import isGeneratorFunction from './is-generator-function'
 import isArguments from './is-arguments'
 import isClass from './is-class'
 
-const types = new Map([
+export const types = new Map([
 	['string', isString],
 	['number', isNumber],
 	['function', isFunction],
