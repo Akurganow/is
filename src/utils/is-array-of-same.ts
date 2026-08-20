@@ -17,5 +17,5 @@ export default function isArrayOfSame(value: unknown): boolean {
 
 	const firstElementType = detect(value[0])
 
-	return value.every(item => detect(item) === firstElementType)
+	return value.every((item) => detect(item) === firstElementType)
 }

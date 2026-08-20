@@ -9,20 +9,16 @@ describe('iterable', () => {
 			expect(isIterable(function* () {})).toBe(false)
 		})
 		test('generator', () => {
-			expect(isIterable((function* () {
-			})())).toBe(true)
+			expect(isIterable((function* () {})())).toBe(true)
 		})
 		test('async generator', () => {
-			expect(isIterable((async function* () {
-			})())).toBe(false)
+			expect(isIterable((async function* () {})())).toBe(false)
 		})
 		test('async iterator function', () => {
-			expect(isIterable(async function* () {
-			})).toBe(false)
+			expect(isIterable(async function* () {})).toBe(false)
 		})
 		test('async iterable function', () => {
-			expect(isIterable(async function* () {
-			})).toBe(false)
+			expect(isIterable(async function* () {})).toBe(false)
 		})
 		test('object', () => {
 			expect(isIterable({})).toBe(false)
@@ -34,12 +30,10 @@ describe('iterable', () => {
 			expect(isIterable(undefined)).toBe(false)
 		})
 		test('function', () => {
-			expect(isIterable(() => {
-			})).toBe(false)
+			expect(isIterable(() => {})).toBe(false)
 		})
 		test('class', () => {
-			expect(isIterable(class {
-			})).toBe(false)
+			expect(isIterable(class {})).toBe(false)
 		})
 		test('string', () => {
 			expect(isIterable('abc')).toBe(true)
@@ -63,8 +57,7 @@ describe('iterable', () => {
 			expect(isAsyncIterable(Promise.resolve())).toBe(false)
 		})
 		test('generator function', () => {
-			expect(isAsyncIterable(function* () {
-			})).toBe(false)
+			expect(isAsyncIterable(function* () {})).toBe(false)
 		})
 		test('generator', () => {
 			expect(isAsyncIterable((function* () {})())).toBe(false)

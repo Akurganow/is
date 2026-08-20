@@ -7,7 +7,6 @@
 
 		/* Modules */
 		"module": "node16",
-		"baseUrl": ".",
 		"rootDir": "./src",
 		"moduleResolution": "node16",
 
@@ -42,8 +41,5 @@
 		"types": []
 	},
 	"include": ["src/**/*.ts"],
-	"exclude": [
-		"node_modules",
-		"__tests__"
-	]
+	"exclude": ["node_modules", "__tests__"]
 }

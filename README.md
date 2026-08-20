@@ -648,9 +648,9 @@ npm install
 
 ### Lint
 
-We use [ESLint](https://eslint.org/) and [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin) to lint our code.
+We use [Biome](https://biomejs.dev/) to lint and format our code.
 </br>
-Check out [eslint.config.js](https://github.com/Akurganow/is/blob/main/eslint.config.js)
+Check out [biome.json](https://github.com/Akurganow/is/blob/main/biome.json)
 
 ```bash
 npm run lint

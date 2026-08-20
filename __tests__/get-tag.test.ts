@@ -14,7 +14,7 @@ describe('getTag', () => {
 		expect(getTag(new Error())).toBe('[object Error]')
 	})
 	test('returns the correct tag for a function', () => {
-		expect(getTag(function() {})).toBe('[object Function]')
+		expect(getTag(function () {})).toBe('[object Function]')
 	})
 	test('returns the correct tag for a map', () => {
 		expect(getTag(new Map())).toBe('[object Map]')

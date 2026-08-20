@@ -11,7 +11,9 @@ import isObject from './is-object'
  * @param {unknown} obj - The value to check.
  * @returns {boolean} True if the value is a plain object, false otherwise.
  */
-export default function isPlainObject<V = unknown>(obj: unknown): obj is Record<string | number | symbol, V> {
+export default function isPlainObject<V = unknown>(
+	obj: unknown,
+): obj is Record<string | number | symbol, V> {
 	if (!isObject(obj)) {
 		return false
 	}
@@ -19,11 +21,15 @@ export default function isPlainObject<V = unknown>(obj: unknown): obj is Record<
 	const prototype = Object.getPrototypeOf(obj)
 
 	const nonEnumerableProperties = Object.getOwnPropertyNames(obj).filter(
-		(prop) => !Object.prototype.propertyIsEnumerable.call(obj, prop)
+		(prop) => !Object.prototype.propertyIsEnumerable.call(obj, prop),
 	)
 
-	return (prototype === null || prototype === Object.prototype || Object.getPrototypeOf(prototype) === null)
-		&& !(Symbol.toStringTag in obj)
-		&& !(Symbol.iterator in obj)
-		&& nonEnumerableProperties.length === 0
+	return (
+		(prototype === null ||
+			prototype === Object.prototype ||
+			Object.getPrototypeOf(prototype) === null) &&
+		!(Symbol.toStringTag in obj) &&
+		!(Symbol.iterator in obj) &&
+		nonEnumerableProperties.length === 0
+	)
 }

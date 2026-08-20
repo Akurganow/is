@@ -9,5 +9,9 @@
  * @returns {boolean} True if the value is iterable, false otherwise.
  */
 export default function isIterable(value: unknown): value is Iterable<unknown> {
-	return typeof (value as Iterable<unknown> | null | undefined)?.[Symbol.iterator] === 'function'
+	return (
+		typeof (value as Iterable<unknown> | null | undefined)?.[
+			Symbol.iterator
+		] === 'function'
+	)
 }

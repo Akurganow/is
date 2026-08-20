@@ -15,5 +15,5 @@ import detect from './detect'
 export default function isArrayOf(value: unknown, type: string): boolean {
 	if (!Array.isArray(value) || isEmptyArray(value)) return false
 
-	return !value.some(item => detect(item) !== type)
+	return !value.some((item) => detect(item) !== type)
 }

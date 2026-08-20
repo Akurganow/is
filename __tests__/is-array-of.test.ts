@@ -38,7 +38,9 @@ describe('isArrayOf', () => {
 		expect(isArrayOf([new Error(), new Error()], 'error')).toBe(true)
 	})
 	test('returns true for an array of promises', () => {
-		expect(isArrayOf([Promise.resolve(), Promise.resolve()], 'promise')).toBe(true)
+		expect(isArrayOf([Promise.resolve(), Promise.resolve()], 'promise')).toBe(
+			true,
+		)
 	})
 	test('returns true for an array of nulls', () => {
 		expect(isArrayOf([null, null], 'null')).toBe(true)

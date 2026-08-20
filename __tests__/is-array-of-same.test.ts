@@ -15,9 +15,7 @@ describe('isArrayOfSame', () => {
 		expect(isArrayOfSame([true, false, true])).toBe(true)
 	})
 	test('returns true for an array of functions', () => {
-		expect(isArrayOfSame([() => {
-		}, () => {
-		}])).toBe(true)
+		expect(isArrayOfSame([() => {}, () => {}])).toBe(true)
 	})
 	test('returns true for an array of objects', () => {
 		expect(isArrayOfSame([{ a: 1 }, { b: 2 }])).toBe(true)

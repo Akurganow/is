@@ -33,7 +33,7 @@ describe('isPlainObject', () => {
 		expect(isPlainObject(array)).toBe(false)
 	})
 	test('returns false for a function', () => {
-		const functionObject = function() {}
+		const functionObject = function () {}
 
 		expect(isPlainObject(functionObject)).toBe(false)
 	})

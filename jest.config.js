@@ -3,18 +3,24 @@
  * https://jestjs.io/docs/configuration
  */
 
-import type { Config } from 'jest'
-
-const config: Config = {
+/** @type {import('jest').Config} */
+module.exports = {
 	testEnvironment: 'node',
 	testMatch: ['**/__tests__/**/*.test.ts'],
 	transform: {
-		'^.+\\.ts$': ['ts-jest', { tsconfig: '__tests__/tsconfig.json' }],
+		'^.+\\.ts$': [
+			'@swc/jest',
+			{
+				jsc: {
+					parser: { syntax: 'typescript' },
+					target: 'es2022',
+				},
+				module: { type: 'commonjs' },
+			},
+		],
 	},
 	clearMocks: true,
 	collectCoverage: false,
 	coverageDirectory: 'coverage',
 	coverageProvider: 'v8',
 }
-
-export default config

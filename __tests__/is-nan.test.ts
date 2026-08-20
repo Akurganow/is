@@ -1,3 +1,4 @@
+// biome-ignore lint/suspicious/noShadowRestrictedNames: isNaN is the package's published export name; the test must import the public API as-is
 import { isNaN } from '../src'
 
 describe('isNaN', () => {

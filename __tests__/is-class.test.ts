@@ -15,7 +15,7 @@ describe('isClass', () => {
 	})
 
 	test('returns true for class without space before body', () => {
-		expect(isClass(class{})).toBe(true)
+		expect(isClass(class {})).toBe(true)
 	})
 
 	test('returns true for named class', () => {

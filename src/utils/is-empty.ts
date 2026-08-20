@@ -5,6 +5,7 @@ import isEmptyObject from './is-empty-object'
 import isEmptyArray from './is-empty-array'
 import isEmptySet from './is-empty-set'
 import isEmptyMap from './is-empty-map'
+// biome-ignore lint/suspicious/noShadowRestrictedNames: isNaN is the published export name of ./is-nan; the public API must not change
 import isNaN from './is-nan'
 
 /**
@@ -24,12 +25,14 @@ import isNaN from './is-nan'
  * @returns {boolean} True if the value is empty, false otherwise.
  */
 export default function isEmpty(value: unknown): boolean {
-	return isUndefined(value)
-		|| isNull(value)
-		|| isNaN(value)
-		|| isEmptyString(value)
-		|| isEmptyObject(value)
-		|| isEmptyArray(value)
-		|| isEmptySet(value)
-		|| isEmptyMap(value)
+	return (
+		isUndefined(value) ||
+		isNull(value) ||
+		isNaN(value) ||
+		isEmptyString(value) ||
+		isEmptyObject(value) ||
+		isEmptyArray(value) ||
+		isEmptySet(value) ||
+		isEmptyMap(value)
+	)
 }
