@@ -1,7 +1,7 @@
-import getTag from './get-tag'
+import getTypedArrayTag from './get-typed-array-tag'
 
 export default function isBigint64Array(
 	value: unknown,
 ): value is BigInt64Array {
-	return ArrayBuffer.isView(value) && getTag(value) === '[object BigInt64Array]'
+	return getTypedArrayTag(value) === 'BigInt64Array'
 }

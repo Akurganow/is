@@ -486,7 +486,7 @@ console.log(isBiguint64array(new BigUint64Array())) // Output: true
 console.log(isBiguint64array(new BigInt64Array())) // Output: false
 ```
 
-> Note: the typed-array checks combine `ArrayBuffer.isView` with the value's tag, so they work across realms (e.g. `node:vm` contexts, iframes) and cannot be spoofed with `Symbol.toStringTag`.
+> Note: the typed-array checks read the value's internal `[[TypedArrayName]]` slot (via the `%TypedArray%.prototype` `Symbol.toStringTag` getter), so they work across realms (e.g. `node:vm` contexts, iframes) and cannot be spoofed with `Symbol.toStringTag`: a non-typed-array claiming a typed-array tag is rejected, and a genuine typed array is still recognized by its own check even if its own `Symbol.toStringTag` has been tampered with.
 
 ### `isIterable`
 

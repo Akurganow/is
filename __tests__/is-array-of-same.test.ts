@@ -5,6 +5,9 @@ describe('isArrayOfSame', () => {
 	test('returns false for an empty array', () => {
 		expect(isArrayOfSame([])).toBe(false)
 	})
+	test('returns true for a single-element array', () => {
+		expect(isArrayOfSame(['a'])).toBe(true)
+	})
 	test('returns true for an array of strings', () => {
 		expect(isArrayOfSame(['a', 'b', 'c'])).toBe(true)
 	})
@@ -65,5 +68,8 @@ describe('isArrayOfSame', () => {
 		expect(isArrayOfSame(null)).toBe(false)
 		expect(isArrayOfSame(undefined)).toBe(false)
 		expect(isArrayOfSame({})).toBe(false)
+	})
+	test('returns false for a typed array (only true arrays are accepted)', () => {
+		expect(isArrayOfSame(new Uint8Array(2))).toBe(false)
 	})
 })

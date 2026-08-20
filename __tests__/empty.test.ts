@@ -57,6 +57,30 @@ describe('empty', () => {
 		expect(isEmptyObject(new Map())).toBe(false)
 		expect(isEmptyObject(new Set())).toBe(false)
 	})
+	test('isEmptyObject and isEmpty reject a Map subclass spoofed as Object', () => {
+		class SpoofedMap extends Map<string, number> {
+			get [Symbol.toStringTag]() {
+				return 'Object'
+			}
+		}
+		const nonEmpty = new SpoofedMap([['a', 1]])
+		expect(isEmptyObject(nonEmpty)).toBe(false)
+		expect(isEmpty(nonEmpty)).toBe(false)
+
+		// an empty one is still a Map, not an empty plain object
+		expect(isEmptyObject(new SpoofedMap())).toBe(false)
+	})
+	test('isEmptyObject and isEmpty reject a Set subclass spoofed as Object', () => {
+		class SpoofedSet extends Set<number> {
+			get [Symbol.toStringTag]() {
+				return 'Object'
+			}
+		}
+		const nonEmpty = new SpoofedSet([1])
+		expect(isEmptyObject(nonEmpty)).toBe(false)
+		expect(isEmpty(nonEmpty)).toBe(false)
+		expect(isEmptyObject(new SpoofedSet())).toBe(false)
+	})
 	test('isEmptySet', () => {
 		expect(isEmptySet(new Set())).toBe(true)
 		expect(isEmptySet(new Set([0]))).toBe(false)

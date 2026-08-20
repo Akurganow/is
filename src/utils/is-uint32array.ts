@@ -1,5 +1,5 @@
-import getTag from './get-tag'
+import getTypedArrayTag from './get-typed-array-tag'
 
 export default function isUint32Array(value: unknown): value is Uint32Array {
-	return ArrayBuffer.isView(value) && getTag(value) === '[object Uint32Array]'
+	return getTypedArrayTag(value) === 'Uint32Array'
 }

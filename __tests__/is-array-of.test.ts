@@ -61,4 +61,7 @@ describe('isArrayOf', () => {
 		expect(isArrayOf(undefined, 'undefined')).toBe(false)
 		expect(isArrayOf({}, 'object')).toBe(false)
 	})
+	test('returns false for a typed array (only true arrays are accepted)', () => {
+		expect(isArrayOf(new Int8Array(2), 'number')).toBe(false)
+	})
 })

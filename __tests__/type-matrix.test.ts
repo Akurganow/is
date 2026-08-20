@@ -1,4 +1,4 @@
-import vm from 'node:vm'
+import { runInNewContext } from 'node:vm'
 import {
 	isFunction,
 	isPromise,
@@ -137,7 +137,33 @@ describe('isWeakset', () => {
 
 describe('cross-realm', () => {
 	test('isUint8array returns true for a Uint8Array from another realm', () => {
-		expect(isUint8array(vm.runInNewContext('new Uint8Array(2)'))).toBe(true)
+		expect(isUint8array(runInNewContext('new Uint8Array(2)'))).toBe(true)
+	})
+	test('isInt8array returns true for an Int8Array from another realm', () => {
+		expect(isInt8array(runInNewContext('new Int8Array(2)'))).toBe(true)
+	})
+	test('isBigint64array returns true for a BigInt64Array from another realm', () => {
+		expect(isBigint64array(runInNewContext('new BigInt64Array(2)'))).toBe(true)
+	})
+	test('isAsyncFunction returns true for an async function from another realm', () => {
+		expect(isAsyncFunction(runInNewContext('(async () => {})'))).toBe(true)
+	})
+	test('isGeneratorFunction returns true for a generator function from another realm', () => {
+		expect(isGeneratorFunction(runInNewContext('(function* () {})'))).toBe(true)
+	})
+	test('isGeneratorFunction and isAsyncFunction return true for an async generator function from another realm', () => {
+		const crossRealmAsyncGenerator = runInNewContext('(async function* () {})')
+		expect(isGeneratorFunction(crossRealmAsyncGenerator)).toBe(true)
+		expect(isAsyncFunction(crossRealmAsyncGenerator)).toBe(true)
+	})
+})
+
+describe('bound functions', () => {
+	test('isAsyncFunction returns true for a bound async function', () => {
+		expect(isAsyncFunction((async () => {}).bind(null))).toBe(true)
+	})
+	test('isGeneratorFunction returns true for a bound generator function', () => {
+		expect(isGeneratorFunction(function* () {}.bind(null))).toBe(true)
 	})
 })
 
@@ -167,6 +193,61 @@ describe('spoofed Symbol.toStringTag', () => {
 	})
 	test('isInt32array returns false for a spoofed object', () => {
 		expect(isInt32array({ [Symbol.toStringTag]: 'Int32Array' })).toBe(false)
+	})
+	test('isAsyncFunction returns false for a spoofed plain function', () => {
+		const spoofed = () => {}
+		Object.defineProperty(spoofed, Symbol.toStringTag, {
+			value: 'AsyncFunction',
+		})
+		expect(isAsyncFunction(spoofed)).toBe(false)
+	})
+	test('isAsyncFunction returns false for a plain function spoofed as AsyncGeneratorFunction', () => {
+		const spoofed = () => {}
+		Object.defineProperty(spoofed, Symbol.toStringTag, {
+			value: 'AsyncGeneratorFunction',
+		})
+		expect(isAsyncFunction(spoofed)).toBe(false)
+	})
+	test('isGeneratorFunction returns false for a spoofed plain function', () => {
+		const spoofed = () => {}
+		Object.defineProperty(spoofed, Symbol.toStringTag, {
+			value: 'GeneratorFunction',
+		})
+		expect(isGeneratorFunction(spoofed)).toBe(false)
+	})
+	test('isGeneratorFunction returns false for a plain function spoofed as AsyncGeneratorFunction', () => {
+		const spoofed = () => {}
+		Object.defineProperty(spoofed, Symbol.toStringTag, {
+			value: 'AsyncGeneratorFunction',
+		})
+		expect(isGeneratorFunction(spoofed)).toBe(false)
+	})
+	test('a genuine typed array spoofed as another typed array fails the other check', () => {
+		const fakeView = new Uint8Array(2)
+		Object.defineProperty(fakeView, Symbol.toStringTag, {
+			value: 'Int8Array',
+		})
+		expect(isInt8array(fakeView)).toBe(false)
+	})
+	test('a genuine typed array with a tampered own Symbol.toStringTag still passes its own check', () => {
+		const tampered = new Uint8Array(2)
+		Object.defineProperty(tampered, Symbol.toStringTag, {
+			value: 'Int8Array',
+		})
+		expect(isUint8array(tampered)).toBe(true)
+
+		const tamperedBig = new BigInt64Array(2)
+		Object.defineProperty(tamperedBig, Symbol.toStringTag, {
+			value: 'Nonsense',
+		})
+		expect(isBigint64array(tamperedBig)).toBe(true)
+	})
+	test('a DataView spoofed as a typed array fails the typed-array checks', () => {
+		const spoofedView = new DataView(new ArrayBuffer(2))
+		Object.defineProperty(spoofedView, Symbol.toStringTag, {
+			value: 'Uint8Array',
+		})
+		expect(isUint8array(spoofedView)).toBe(false)
 	})
 })
 

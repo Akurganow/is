@@ -1,52 +1,112 @@
-export { default as detect } from './utils/detect'
-export { default as isString } from './utils/is-string'
-export { default as isNumber } from './utils/is-number'
-export { default as isBoolean } from './utils/is-boolean'
-export { default as isFunction } from './utils/is-function'
-export { default as isAsyncFunction } from './utils/is-async-function'
-export { default as isPromise } from './utils/is-promise'
-export { default as isObject } from './utils/is-object'
-export { default as isObjectLike } from './utils/is-object-like'
-export { default as isUndefined } from './utils/is-undefined'
-export { default as isNull } from './utils/is-null'
-export { default as isArray } from './utils/is-array'
-export { default as isArrayOf } from './utils/is-array-of'
-export { default as isArrayOfSame } from './utils/is-array-of-same'
-export { default as isSymbol } from './utils/is-symbol'
-export { default as isBigint } from './utils/is-bigint'
-export { default as isRegexp } from './utils/is-regexp'
-export { default as isDate } from './utils/is-date'
-export { default as isError } from './utils/is-error'
-export { default as isMap } from './utils/is-map'
-export { default as isSet } from './utils/is-set'
-export { default as isWeakmap } from './utils/is-weakmap'
-export { default as isWeakset } from './utils/is-weakset'
-export { default as isInt8array } from './utils/is-int8array'
-export { default as isUint8array } from './utils/is-uint8array'
-export { default as isUint8clampedarray } from './utils/is-uint8clampedarray'
-export { default as isInt16array } from './utils/is-int16array'
-export { default as isUint16array } from './utils/is-uint16array'
-export { default as isInt32array } from './utils/is-int32array'
-export { default as isUint32array } from './utils/is-uint32array'
-export { default as isFloat32array } from './utils/is-float32array'
-export { default as isFloat64array } from './utils/is-float64array'
-export { default as isBigint64array } from './utils/is-bigint64array'
-export { default as isBiguint64array } from './utils/is-biguint64array'
-export { default as isArraybuffer } from './utils/is-arraybuffer'
-export { default as isDataView } from './utils/is-data-view'
-export { default as isGeneratorFunction } from './utils/is-generator-function'
-export { default as isArguments } from './utils/is-arguments'
-export { default as isClass } from './utils/is-class'
-export { default as isPrimitive } from './utils/is-primitive'
-export { default as isPlainObject } from './utils/is-plain-object'
-export { default as isPromiseLike } from './utils/is-promise-like'
-export { default as isIterable } from './utils/is-iterable'
-export { default as isAsyncIterable } from './utils/is-async-iterable'
-export { default as getTag } from './utils/get-tag'
-export { default as isNaN } from './utils/is-nan'
-export { default as isEmpty } from './utils/is-empty'
-export { default as isEmptyString } from './utils/is-empty-string'
-export { default as isEmptyArray } from './utils/is-empty-array'
-export { default as isEmptyObject } from './utils/is-empty-object'
-export { default as isEmptySet } from './utils/is-empty-set'
-export { default as isEmptyMap } from './utils/is-empty-map'
+// Import-then-export (instead of `export { default as X } from ...`) so tsc
+// emits `get: function () { return x_1.default; }` getters that
+// cjs-module-lexer can statically parse — this keeps every named export
+// available to Node.js ESM consumers (`import { isString } from '@plq/is'`).
+import detect from './utils/detect'
+import getTag from './utils/get-tag'
+import isArguments from './utils/is-arguments'
+import isArray from './utils/is-array'
+import isArrayOf from './utils/is-array-of'
+import isArrayOfSame from './utils/is-array-of-same'
+import isArraybuffer from './utils/is-arraybuffer'
+import isAsyncFunction from './utils/is-async-function'
+import isAsyncIterable from './utils/is-async-iterable'
+import isBigint from './utils/is-bigint'
+import isBigint64array from './utils/is-bigint64array'
+import isBiguint64array from './utils/is-biguint64array'
+import isBoolean from './utils/is-boolean'
+import isClass from './utils/is-class'
+import isDataView from './utils/is-data-view'
+import isDate from './utils/is-date'
+import isEmpty from './utils/is-empty'
+import isEmptyArray from './utils/is-empty-array'
+import isEmptyMap from './utils/is-empty-map'
+import isEmptyObject from './utils/is-empty-object'
+import isEmptySet from './utils/is-empty-set'
+import isEmptyString from './utils/is-empty-string'
+import isError from './utils/is-error'
+import isFloat32array from './utils/is-float32array'
+import isFloat64array from './utils/is-float64array'
+import isFunction from './utils/is-function'
+import isGeneratorFunction from './utils/is-generator-function'
+import isInt8array from './utils/is-int8array'
+import isInt16array from './utils/is-int16array'
+import isInt32array from './utils/is-int32array'
+import isIterable from './utils/is-iterable'
+import isMap from './utils/is-map'
+// biome-ignore lint/suspicious/noShadowRestrictedNames: isNaN is the published export name of ./utils/is-nan; the public API must not change
+import isNaN from './utils/is-nan'
+import isNull from './utils/is-null'
+import isNumber from './utils/is-number'
+import isObject from './utils/is-object'
+import isObjectLike from './utils/is-object-like'
+import isPlainObject from './utils/is-plain-object'
+import isPrimitive from './utils/is-primitive'
+import isPromise from './utils/is-promise'
+import isPromiseLike from './utils/is-promise-like'
+import isRegexp from './utils/is-regexp'
+import isSet from './utils/is-set'
+import isString from './utils/is-string'
+import isSymbol from './utils/is-symbol'
+import isUint8array from './utils/is-uint8array'
+import isUint8clampedarray from './utils/is-uint8clampedarray'
+import isUint16array from './utils/is-uint16array'
+import isUint32array from './utils/is-uint32array'
+import isUndefined from './utils/is-undefined'
+import isWeakmap from './utils/is-weakmap'
+import isWeakset from './utils/is-weakset'
+
+export {
+	detect,
+	getTag,
+	isArguments,
+	isArray,
+	isArrayOf,
+	isArrayOfSame,
+	isArraybuffer,
+	isAsyncFunction,
+	isAsyncIterable,
+	isBigint,
+	isBigint64array,
+	isBiguint64array,
+	isBoolean,
+	isClass,
+	isDataView,
+	isDate,
+	isEmpty,
+	isEmptyArray,
+	isEmptyMap,
+	isEmptyObject,
+	isEmptySet,
+	isEmptyString,
+	isError,
+	isFloat32array,
+	isFloat64array,
+	isFunction,
+	isGeneratorFunction,
+	isInt8array,
+	isInt16array,
+	isInt32array,
+	isIterable,
+	isMap,
+	isNaN,
+	isNull,
+	isNumber,
+	isObject,
+	isObjectLike,
+	isPlainObject,
+	isPrimitive,
+	isPromise,
+	isPromiseLike,
+	isRegexp,
+	isSet,
+	isString,
+	isSymbol,
+	isUint8array,
+	isUint8clampedarray,
+	isUint16array,
+	isUint32array,
+	isUndefined,
+	isWeakmap,
+	isWeakset,
+}

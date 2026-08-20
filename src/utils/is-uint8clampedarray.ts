@@ -1,9 +1,7 @@
-import getTag from './get-tag'
+import getTypedArrayTag from './get-typed-array-tag'
 
 export default function isUint8ClampedArray(
 	value: unknown,
 ): value is Uint8ClampedArray {
-	return (
-		ArrayBuffer.isView(value) && getTag(value) === '[object Uint8ClampedArray]'
-	)
+	return getTypedArrayTag(value) === 'Uint8ClampedArray'
 }

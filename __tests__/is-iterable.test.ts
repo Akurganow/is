@@ -17,8 +17,8 @@ describe('iterable', () => {
 		test('async iterator function', () => {
 			expect(isIterable(async function* () {})).toBe(false)
 		})
-		test('async iterable function', () => {
-			expect(isIterable(async function* () {})).toBe(false)
+		test('object with only Symbol.asyncIterator is not sync-iterable', () => {
+			expect(isIterable({ async *[Symbol.asyncIterator]() {} })).toBe(false)
 		})
 		test('object', () => {
 			expect(isIterable({})).toBe(false)

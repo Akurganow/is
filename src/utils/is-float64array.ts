@@ -1,5 +1,5 @@
-import getTag from './get-tag'
+import getTypedArrayTag from './get-typed-array-tag'
 
 export default function isFloat64Array(value: unknown): value is Float64Array {
-	return ArrayBuffer.isView(value) && getTag(value) === '[object Float64Array]'
+	return getTypedArrayTag(value) === 'Float64Array'
 }
