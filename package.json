@@ -4,6 +4,14 @@
 	"description": "Small utility package that provides a set of functions to check if a given argument is of a certain type",
 	"main": "lib/index.js",
 	"types": "lib/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./lib/index.d.ts",
+			"default": "./lib/index.js"
+		},
+		"./package.json": "./package.json"
+	},
+	"sideEffects": false,
 	"files": [
 		"lib"
 	],
@@ -11,9 +19,14 @@
 		"node": ">=18.18.0"
 	},
 	"scripts": {
-		"lint": "eslint ./src/**/*.ts",
+		"lint": "eslint .",
+		"typecheck": "tsc --noEmit",
+		"typecheck:tests": "tsc -p __tests__ --noEmit",
 		"test": "jest",
+		"test:coverage": "jest --coverage",
+		"test:bun": "bun test",
 		"build": "tsc",
+		"prepack": "npm run build",
 		"release": "dotenv release-it"
 	},
 	"repository": {
@@ -52,17 +65,18 @@
 	},
 	"homepage": "https://github.com/Akurganow/is#readme",
 	"devDependencies": {
-		"@release-it/conventional-changelog": "^10.0.0",
+		"@eslint/js": "^10.0.1",
+		"@release-it/conventional-changelog": "^12.0.0",
+		"@stylistic/eslint-plugin": "^5.10.0",
 		"@types/jest": "^30.0.0",
-		"@typescript-eslint/eslint-plugin": "^8.38.0",
-		"@typescript-eslint/parser": "^8.38.0",
-		"dotenv-cli": "^10.0.0",
-		"eslint": "^9.32.0",
-		"globals": "^16.3.0",
+		"dotenv-cli": "^11.0.0",
+		"eslint": "^10.8.1",
+		"globals": "^17.11.0",
 		"jest": "^30.0.0",
-		"release-it": "^19.0.4",
+		"release-it": "^21.0.2",
 		"ts-jest": "^29.1.1",
 		"ts-node": "^10.9.1",
-		"typescript": "^5.8.3"
+		"typescript": "^5.9.3",
+		"typescript-eslint": "^8.67.0"
 	}
 }
