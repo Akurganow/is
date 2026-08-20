@@ -1,3 +1,4 @@
+import vm from 'node:vm'
 import {
 	isFunction,
 	isPromise,
@@ -25,6 +26,8 @@ import {
 	isUint32array,
 	isFloat32array,
 	isFloat64array,
+	isBigint64array,
+	isBiguint64array,
 	isArraybuffer,
 	isDataView,
 	isGeneratorFunction,
@@ -58,11 +61,49 @@ describe('isInt32array', () => { tests('int32array', isInt32array) })
 describe('isUint32array', () => { tests('uint32array', isUint32array) })
 describe('isFloat32array', () => { tests('float32array', isFloat32array) })
 describe('isFloat64array', () => { tests('float64array', isFloat64array) })
+describe('isBigint64array', () => { tests('bigint64array', isBigint64array) })
+describe('isBiguint64array', () => { tests('biguint64array', isBiguint64array) })
 describe('isArraybuffer', () => { tests('arraybuffer', isArraybuffer) })
 describe('isDataView', () => { tests('dataview', isDataView) })
 describe('isGeneratorFunction', () => { tests('generatorFunction', isGeneratorFunction) })
 describe('isWeakmap', () => { tests('weakmap', isWeakmap) })
 describe('isWeakset', () => { tests('weakset', isWeakset) })
+
+describe('cross-realm', () => {
+	test('isUint8array returns true for a Uint8Array from another realm', () => {
+		expect(isUint8array(vm.runInNewContext('new Uint8Array(2)'))).toBe(true)
+	})
+})
+
+describe('spoofed Symbol.toStringTag', () => {
+	test('isGeneratorFunction returns false for a spoofed object', () => {
+		expect(isGeneratorFunction({ [Symbol.toStringTag]: 'GeneratorFunction' })).toBe(false)
+	})
+	test('isAsyncFunction returns false for a spoofed object', () => {
+		expect(isAsyncFunction({ [Symbol.toStringTag]: 'AsyncFunction' })).toBe(false)
+	})
+	test('isBigint64array returns false for a spoofed object', () => {
+		expect(isBigint64array({ [Symbol.toStringTag]: 'BigInt64Array' })).toBe(false)
+	})
+	test('isBiguint64array returns false for a spoofed object', () => {
+		expect(isBiguint64array({ [Symbol.toStringTag]: 'BigUint64Array' })).toBe(false)
+	})
+	test('isUint8array returns false for a spoofed object', () => {
+		expect(isUint8array({ [Symbol.toStringTag]: 'Uint8Array' })).toBe(false)
+	})
+	test('isInt32array returns false for a spoofed object', () => {
+		expect(isInt32array({ [Symbol.toStringTag]: 'Int32Array' })).toBe(false)
+	})
+})
+
+describe('async generator function', () => {
+	test('satisfies isGeneratorFunction', () => {
+		expect(isGeneratorFunction(async function* () {})).toBe(true)
+	})
+	test('satisfies isAsyncFunction', () => {
+		expect(isAsyncFunction(async function* () {})).toBe(true)
+	})
+})
 
 function tests (truthy: string, fn: (value: unknown) => boolean) {
 	test('function', () => {

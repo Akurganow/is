@@ -1,6 +1,3 @@
-import isNull from './is-null'
-import isFunction from './is-function'
-
 /**
  * Checks if a given value is iterable.
  *
@@ -12,5 +9,5 @@ import isFunction from './is-function'
  * @returns {boolean} True if the value is iterable, false otherwise.
  */
 export default function isIterable(value: unknown): value is Iterable<unknown> {
-	return !isNull(value) && isFunction((value as Iterable<unknown>)?.[Symbol.iterator])
+	return typeof (value as Iterable<unknown> | null | undefined)?.[Symbol.iterator] === 'function'
 }

@@ -52,4 +52,20 @@ describe('isArrayOfSame', () => {
 	test('returns false for an array of mixed types', () => {
 		expect(isArrayOfSame([1, 'a', true])).toBe(false)
 	})
+	test('returns false for an array of numbers and strings', () => {
+		expect(isArrayOfSame([1, 'a'])).toBe(false)
+	})
+	test('returns false for an array of functions with different detected types', () => {
+		expect(isArrayOfSame([() => {}, async () => {}])).toBe(false)
+	})
+	test('returns false for an array of plain objects and class instances', () => {
+		expect(isArrayOfSame([{}, new Date()])).toBe(false)
+	})
+	test('returns false for non-array input without throwing', () => {
+		expect(() => isArrayOfSame('abc')).not.toThrow()
+		expect(isArrayOfSame('abc')).toBe(false)
+		expect(isArrayOfSame(null)).toBe(false)
+		expect(isArrayOfSame(undefined)).toBe(false)
+		expect(isArrayOfSame({})).toBe(false)
+	})
 })

@@ -46,4 +46,17 @@ describe('isArrayOf', () => {
 	test('returns true for an array of undefineds', () => {
 		expect(isArrayOf([undefined, undefined], 'undefined')).toBe(true)
 	})
+	test('returns false for an array with mixed types', () => {
+		expect(isArrayOf(['a', 1], 'string')).toBe(false)
+	})
+	test('returns false when the type does not match', () => {
+		expect(isArrayOf(['a'], 'number')).toBe(false)
+	})
+	test('returns false for non-array input without throwing', () => {
+		expect(() => isArrayOf('abc', 'string')).not.toThrow()
+		expect(isArrayOf('abc', 'string')).toBe(false)
+		expect(isArrayOf(null, 'null')).toBe(false)
+		expect(isArrayOf(undefined, 'undefined')).toBe(false)
+		expect(isArrayOf({}, 'object')).toBe(false)
+	})
 })

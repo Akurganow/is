@@ -1,8 +1,10 @@
 {
 	"extends": "../tsconfig.json",
 	"compilerOptions": {
-		"rootDir": "__tests__",
+		"noEmit": true,
+		"rootDir": "..",
+		"types": ["jest", "node"]
 	},
-	"include": ["__tests__/**/*.ts"],
+	"include": ["./**/*.ts"],
 	"exclude": ["node_modules"]
 }

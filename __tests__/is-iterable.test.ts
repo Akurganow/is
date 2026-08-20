@@ -41,6 +41,13 @@ describe('iterable', () => {
 			expect(isIterable(class {
 			})).toBe(false)
 		})
+		test('string', () => {
+			expect(isIterable('abc')).toBe(true)
+			expect(isIterable('')).toBe(true)
+		})
+		test('object with a generator method as Symbol.iterator', () => {
+			expect(isIterable({ *[Symbol.iterator]() {} })).toBe(true)
+		})
 	})
 	describe('isAsyncIterable', () => {
 		test('array', () => {
@@ -67,6 +74,20 @@ describe('iterable', () => {
 		})
 		test('async iterator function', () => {
 			expect(isAsyncIterable(async function* () {})).toBe(false)
+		})
+		test('string', () => {
+			expect(isAsyncIterable('abc')).toBe(false)
+		})
+		test('object with an async generator method as Symbol.asyncIterator', () => {
+			expect(isAsyncIterable({ async *[Symbol.asyncIterator]() {} })).toBe(true)
+		})
+		test('undefined', () => {
+			expect(() => isAsyncIterable(undefined)).not.toThrow()
+			expect(isAsyncIterable(undefined)).toBe(false)
+		})
+		test('null', () => {
+			expect(() => isAsyncIterable(null)).not.toThrow()
+			expect(isAsyncIterable(null)).toBe(false)
 		})
 	})
 })

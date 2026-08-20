@@ -6,10 +6,13 @@
 import type { Config } from 'jest'
 
 const config: Config = {
-	preset: 'ts-jest',
-	testEnvironment: 'jest-environment-node',
+	testEnvironment: 'node',
+	testMatch: ['**/__tests__/**/*.test.ts'],
+	transform: {
+		'^.+\\.ts$': ['ts-jest', { tsconfig: '__tests__/tsconfig.json' }],
+	},
 	clearMocks: true,
-	collectCoverage: true,
+	collectCoverage: false,
 	coverageDirectory: 'coverage',
 	coverageProvider: 'v8',
 }

@@ -1,4 +1,8 @@
 # is
+
+[![CI](https://github.com/Akurganow/is/actions/workflows/main.yml/badge.svg)](https://github.com/Akurganow/is/actions/workflows/main.yml)
+[![npm version](https://img.shields.io/npm/v/%40plq%2Fis.svg)](https://www.npmjs.com/package/@plq/is)
+
 Small utility package that provides a set of functions to check if a given argument is of a certain type
 
 ## Functions
@@ -16,6 +20,11 @@ console.log(detect(true)) // Output: 'boolean'
 console.log(detect({})) // Output: 'object'
 console.log(detect([])) // Output: 'array'
 ```
+
+`detect` returns an all-lowercase type name derived from the value's tag: `'string'`, `'number'`, `'boolean'`, `'object'`, `'array'`, `'null'`, `'undefined'`, `'symbol'`, `'bigint'`, `'regexp'`, `'date'`, `'error'`, `'map'`, `'set'`, `'weakmap'`, `'weakset'`, `'promise'`, `'function'`, `'asyncfunction'`, `'generatorfunction'`, `'asyncgeneratorfunction'`, `'arraybuffer'`, `'dataview'`, `'int8array'`, `'uint8array'`, `'uint8clampedarray'`, `'int16array'`, `'uint16array'`, `'int32array'`, `'uint32array'`, `'float32array'`, `'float64array'`, `'bigint64array'`, `'biguint64array'` and so on.
+`isArrayOf` and `isArrayOfSame` use this vocabulary.
+
+> Note: `detect`, `getTag` and other tag-based checks rely on `Object.prototype.toString`, which can be spoofed via `Symbol.toStringTag` unless the check adds an extra guard.
 
 ### `getTag`
 
@@ -48,10 +57,10 @@ console.log(isFunction(async () => {})) // Output: false
 Checks if a given value is an asynchronous function.
 
 ```javascript
-javascript
 import { isAsyncFunction } from '@plq/is'
 
 console.log(isAsyncFunction(async () => {})) // Output: true
+console.log(isAsyncFunction(async function* () {})) // Output: true
 console.log(isAsyncFunction(() => {})) // Output: false
 ```
 
@@ -63,6 +72,7 @@ Checks if a given value is a generator function.
 import { isGeneratorFunction } from '@plq/is'
 
 console.log(isGeneratorFunction(function* () {})) // Output: true
+console.log(isGeneratorFunction(async function* () {})) // Output: true
 console.log(isGeneratorFunction(() => {})) // Output: false
 ```
 
@@ -111,6 +121,24 @@ console.log(isArrayOf([], 'string')) // Output: false
 console.log(isArrayOf(['a', 'b', 'c'], 'string')) // Output: true
 console.log(isArrayOf(['a', 'b', 'c'], 'number')) // Output: false
 console.log(isArrayOf(['a', 'b', 3], 'string')) // Output: false
+```
+
+The `type` argument is one of the all-lowercase type names returned by `detect`.
+
+### `isArrayOfSame`
+
+Checks if a given array contains only elements of the same type.
+Each element's type is determined with `detect`, so all elements must share the same detected type.
+A non-array value or an empty array returns false.
+
+```javascript
+import { isArrayOfSame } from '@plq/is'
+
+console.log(isArrayOfSame([1, 2, 3])) // Output: true
+console.log(isArrayOfSame([{}, {}])) // Output: true
+console.log(isArrayOfSame([1, 'a'])) // Output: false
+console.log(isArrayOfSame([() => {}, async () => {}])) // Output: false
+console.log(isArrayOfSame([])) // Output: false
 ```
 
 ### `isObject`
@@ -204,15 +232,15 @@ console.log(isNaN(NaN)) // Output: true
 console.log(isNaN(1)) // Output: false
 ```
 
-### `isBigInt`
+### `isBigint`
 
 Checks if a given value is a BigInt.
 
 ```javascript
-import { isBigInt } from '@plq/is'
+import { isBigint } from '@plq/is'
 
-console.log(isBigInt(BigInt(1))) // Output: true
-console.log(isBigInt(1)) // Output: false
+console.log(isBigint(BigInt(1))) // Output: true
+console.log(isBigint(1)) // Output: false
 ```
 
 ### `isBoolean`
@@ -249,15 +277,15 @@ console.log(isDate(new Date())) // Output: true
 console.log(isDate('2021-01-01')) // Output: false
 ```
 
-### `isRegExp`
+### `isRegexp`
 
 Checks if a given value is a regular expression.
 
 ```javascript
-import { isRegExp } from '@plq/is'
+import { isRegexp } from '@plq/is'
 
-console.log(isRegExp(/test/)) // Output: true
-console.log(isRegExp('test')) // Output: false
+console.log(isRegexp(/test/)) // Output: true
+console.log(isRegexp('test')) // Output: false
 ```
 
 ### `isSet`
@@ -282,26 +310,26 @@ console.log(isMap(new Map())) // Output: true
 console.log(isMap([])) // Output: false
 ```
 
-### `isWeakSet`
+### `isWeakset`
 
 Checks if a given value is a WeakSet.
 
 ```javascript
-import { isWeakSet } from '@plq/is'
+import { isWeakset } from '@plq/is'
 
-console.log(isWeakSet(new WeakSet())) // Output: true
-console.log(isWeakSet([])) // Output: false
+console.log(isWeakset(new WeakSet())) // Output: true
+console.log(isWeakset([])) // Output: false
 ```
 
-### `isWeakMap`
+### `isWeakmap`
 
 Checks if a given value is a WeakMap.
 
 ```javascript
-import { isWeakMap } from '@plq/is'
+import { isWeakmap } from '@plq/is'
 
-console.log(isWeakMap(new WeakMap())) // Output: true
-console.log(isWeakMap([])) // Output: false
+console.log(isWeakmap(new WeakMap())) // Output: true
+console.log(isWeakmap([])) // Output: false
 ```
 
 ### `isError`
@@ -315,6 +343,17 @@ console.log(isError(new Error())) // Output: true
 console.log(isError('Error')) // Output: false
 ```
 
+### `isArraybuffer`
+
+Checks if a given value is an ArrayBuffer.
+
+```javascript
+import { isArraybuffer } from '@plq/is'
+
+console.log(isArraybuffer(new ArrayBuffer(1))) // Output: true
+console.log(isArraybuffer(new Uint8Array(1))) // Output: false
+```
+
 ### `isDataView`
 
 Checks if a given value is a DataView.
@@ -325,6 +364,129 @@ import { isDataView } from '@plq/is'
 console.log(isDataView(new DataView(new ArrayBuffer(1)))) // Output: true
 console.log(isDataView([])) // Output: false
 ```
+
+### `isInt8array`
+
+Checks if a given value is an Int8Array.
+
+```javascript
+import { isInt8array } from '@plq/is'
+
+console.log(isInt8array(new Int8Array())) // Output: true
+console.log(isInt8array(new Uint8Array())) // Output: false
+```
+
+### `isUint8array`
+
+Checks if a given value is a Uint8Array.
+
+```javascript
+import { isUint8array } from '@plq/is'
+
+console.log(isUint8array(new Uint8Array())) // Output: true
+console.log(isUint8array(new Int8Array())) // Output: false
+```
+
+### `isUint8clampedarray`
+
+Checks if a given value is a Uint8ClampedArray.
+
+```javascript
+import { isUint8clampedarray } from '@plq/is'
+
+console.log(isUint8clampedarray(new Uint8ClampedArray())) // Output: true
+console.log(isUint8clampedarray(new Uint8Array())) // Output: false
+```
+
+### `isInt16array`
+
+Checks if a given value is an Int16Array.
+
+```javascript
+import { isInt16array } from '@plq/is'
+
+console.log(isInt16array(new Int16Array())) // Output: true
+console.log(isInt16array(new Uint16Array())) // Output: false
+```
+
+### `isUint16array`
+
+Checks if a given value is a Uint16Array.
+
+```javascript
+import { isUint16array } from '@plq/is'
+
+console.log(isUint16array(new Uint16Array())) // Output: true
+console.log(isUint16array(new Int16Array())) // Output: false
+```
+
+### `isInt32array`
+
+Checks if a given value is an Int32Array.
+
+```javascript
+import { isInt32array } from '@plq/is'
+
+console.log(isInt32array(new Int32Array())) // Output: true
+console.log(isInt32array(new Uint32Array())) // Output: false
+```
+
+### `isUint32array`
+
+Checks if a given value is a Uint32Array.
+
+```javascript
+import { isUint32array } from '@plq/is'
+
+console.log(isUint32array(new Uint32Array())) // Output: true
+console.log(isUint32array(new Int32Array())) // Output: false
+```
+
+### `isFloat32array`
+
+Checks if a given value is a Float32Array.
+
+```javascript
+import { isFloat32array } from '@plq/is'
+
+console.log(isFloat32array(new Float32Array())) // Output: true
+console.log(isFloat32array(new Float64Array())) // Output: false
+```
+
+### `isFloat64array`
+
+Checks if a given value is a Float64Array.
+
+```javascript
+import { isFloat64array } from '@plq/is'
+
+console.log(isFloat64array(new Float64Array())) // Output: true
+console.log(isFloat64array(new Float32Array())) // Output: false
+```
+
+### `isBigint64array`
+
+Checks if a given value is a BigInt64Array.
+
+```javascript
+import { isBigint64array } from '@plq/is'
+
+console.log(isBigint64array(new BigInt64Array())) // Output: true
+console.log(isBigint64array(new BigUint64Array())) // Output: false
+```
+
+### `isBiguint64array`
+
+Checks if a given value is a BigUint64Array.
+
+```javascript
+import { isBiguint64array } from '@plq/is'
+
+console.log(isBiguint64array(new BigUint64Array())) // Output: true
+console.log(isBiguint64array(new BigInt64Array())) // Output: false
+```
+
+> Note: the typed-array checks combine `ArrayBuffer.isView` with the value's tag, so they work across realms (e.g. `node:vm` contexts, iframes) and cannot be spoofed with `Symbol.toStringTag`.
 
 ### `isIterable`
 
@@ -344,9 +506,12 @@ Checks if a given value is an async iterable.
 ```javascript
 import { isAsyncIterable } from '@plq/is'
 
-console.log(isAsyncIterable(async function* () {})) // Output: true
+console.log(isAsyncIterable((async function* () {})())) // Output: true
+console.log(isAsyncIterable(async function* () {})) // Output: false
 console.log(isAsyncIterable([])) // Output: false
 ```
+
+> Note: an async generator function itself is not async-iterable — the async generator object returned by calling it is.
 
 ### `isPrimitive`
 
@@ -382,6 +547,8 @@ console.log(isEmpty(new Map())) // Output: true
 console.log(isEmpty(() => {})) // Output: false
 ```
 
+> Note: numbers, booleans, WeakMap and WeakSet are never considered empty. NaN and whitespace-only strings count as empty.
+
 ### `isEmptyString`
 
 Checks if a given value is an empty string.
@@ -390,9 +557,11 @@ Checks if a given value is an empty string.
 import { isEmptyString } from '@plq/is'
 
 console.log(isEmptyString('')) // Output: true
-console.log(isEmptyString(' ')) // Output: false
+console.log(isEmptyString(' ')) // Output: true
 console.log(isEmptyString('test')) // Output: false
 ```
+
+> Note: the string is trimmed first, so whitespace-only strings are considered empty.
 
 ### `isEmptyArray`
 
@@ -452,6 +621,8 @@ console.log(isClass(new Test())) // Output: false
 console.log(isClass(() => {})) // Output: false
 ```
 
+> Note: `isClass` inspects the function's source text, so classes transpiled to plain functions (e.g. by TypeScript or Babel targeting ES5) are not detected.
+
 ### `isArguments`
 
 Checks if a given value is an arguments object.
@@ -479,7 +650,7 @@ npm install
 
 We use [ESLint](https://eslint.org/) and [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin) to lint our code.
 </br>
-Check out [.eslintrc.json](https://github.com/Akurganow/is/blob/main/.eslintrc.json)
+Check out [eslint.config.js](https://github.com/Akurganow/is/blob/main/eslint.config.js)
 
 ```bash
 npm run lint
@@ -503,10 +674,10 @@ npm run build
 
 ### Dev check list
 
-- [ ] Add new file to `src/ulils` folder like `is-object.ts`
+- [ ] Add new file to `src/utils` folder like `is-object.ts`
 - [ ] Write a function `isObject` in `is-object.ts`
 - [ ] Add new function to `src/index.ts` like `export { default as isObject } from './utils/is-object'`
-- [ ] Add new test to `__tests__/tests.ts` file like `describe('isObject', () => { tests('object', isObject) })`
+- [ ] Add new test to `__tests__/type-matrix.test.ts` file like `describe('isObject', () => { tests('object', isObject) })`
 - [ ] Run `npm run lint`
 - [ ] Run `npm run test`
 - [ ] Commit and push your changes

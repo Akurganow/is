@@ -1,5 +1,4 @@
 import isObject from './is-object'
-import isNull from './is-null'
 
 /**
  * Checks if a given value is a plain object.
@@ -13,10 +12,10 @@ import isNull from './is-null'
  * @returns {boolean} True if the value is a plain object, false otherwise.
  */
 export default function isPlainObject<V = unknown>(obj: unknown): obj is Record<string | number | symbol, V> {
-	if (isNull(obj) || !isObject(obj)) {
+	if (!isObject(obj)) {
 		return false
 	}
-	
+
 	const prototype = Object.getPrototypeOf(obj)
 
 	const nonEnumerableProperties = Object.getOwnPropertyNames(obj).filter(
