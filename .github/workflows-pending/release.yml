@@ -1,0 +1,62 @@
+name: Release
+
+on:
+    push:
+        branches: [ main ]
+    workflow_dispatch: {}
+
+env:
+    CI: true
+
+permissions:
+    contents: write
+    id-token: write
+
+concurrency:
+    group: release
+    cancel-in-progress: false
+
+jobs:
+    release:
+        if: ${{ github.event_name == 'workflow_dispatch' || !startsWith(github.event.head_commit.message, 'chore(release):') }}
+        runs-on: ubuntu-latest
+        timeout-minutes: 20
+        steps:
+            - uses: actions/checkout@v7
+              with:
+                  fetch-depth: 0
+
+            - uses: actions/setup-node@v7
+              with:
+                  node-version-file: '.node-version'
+                  cache: 'npm'
+                  registry-url: 'https://registry.npmjs.org'
+
+            - name: Install dependencies
+              run: npm ci --ignore-scripts
+
+            - name: Check for releasable commits
+              id: gate
+              run: |
+                  last_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo '')
+                  range=''
+                  if [ -n "$last_tag" ]; then range="$last_tag..HEAD"; fi
+                  if [ "${{ github.event_name }}" = 'workflow_dispatch' ]; then
+                      echo 'release=true' >> "$GITHUB_OUTPUT"
+                  elif git log $range --pretty=%s | grep -qE '^(feat|fix|perf)(\([^)]*\))?!?:|^[a-z]+(\([^)]*\))?!:' \
+                    || git log $range --pretty=%B | grep -q '^BREAKING CHANGE'; then
+                      echo 'release=true' >> "$GITHUB_OUTPUT"
+                  else
+                      echo 'release=false' >> "$GITHUB_OUTPUT"
+                      echo "No releasable commits since ${last_tag:-repo start}; skipping."
+                  fi
+
+            - name: Release
+              if: steps.gate.outputs.release == 'true'
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  NPM_CONFIG_PROVENANCE: 'true'
+              run: |
+                  git config user.name 'github-actions[bot]'
+                  git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+                  npx release-it --ci

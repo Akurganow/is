@@ -34,7 +34,18 @@
 		"type": "git",
 		"url": "git+https://github.com/Akurganow/is.git"
 	},
+	"publishConfig": {
+		"access": "public"
+	},
 	"release-it": {
+		"git": {
+			"commitMessage": "chore(release): v${version}",
+			"tagName": "v${version}",
+			"requireCleanWorkingDir": true
+		},
+		"github": {
+			"release": true
+		},
 		"hooks": {
 			"before:init": [
 				"npm run lint",
