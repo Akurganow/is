@@ -11,7 +11,7 @@ describe('isPrimitive', () => {
 		expect(isPrimitive(false)).toBe(true)
 		expect(isPrimitive(Symbol())).toBe(true)
 	})
-	test("should return false when it's not an primitive", () => {
+	test("should return false when it's not a primitive", () => {
 		expect(isPrimitive({})).toBe(false)
 		expect(isPrimitive([])).toBe(false)
 		expect(isPrimitive(() => {})).toBe(false)

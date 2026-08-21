@@ -178,6 +178,14 @@ describe('spoofed Symbol.toStringTag', () => {
 			false,
 		)
 	})
+	test('isPromise returns false for a then-only object spoofed as Promise', () => {
+		expect(
+			isPromise({ [Symbol.toStringTag]: 'Promise', then() {} }),
+		).toBe(false)
+	})
+	test('isPromise returns true for a native promise', () => {
+		expect(isPromise(Promise.resolve())).toBe(true)
+	})
 	test('isBigint64array returns false for a spoofed object', () => {
 		expect(isBigint64array({ [Symbol.toStringTag]: 'BigInt64Array' })).toBe(
 			false,
