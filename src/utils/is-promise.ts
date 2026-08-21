@@ -1,7 +1,18 @@
-import getTag from './get-tag'
+import getTag from './get-tag.js'
 
-export default function isPromise<T = unknown> (value: unknown): value is PromiseLike<T> {
-	return Boolean(value) &&
-		getTag(value) === '[object Promise]' &&
-		typeof (value as PromiseLike<unknown>).then === 'function'
+export default function isPromise<T = unknown>(
+	value: unknown,
+): value is Promise<T> {
+	if (getTag(value) !== '[object Promise]') return false
+
+	// The predicate narrows to the full Promise interface, so demand the
+	// complete method surface, not just `then` — a tag-spoofed object that
+	// only has `then` must not be typed as having `catch`/`finally`.
+	const candidate = value as Promise<unknown>
+
+	return (
+		typeof candidate.then === 'function' &&
+		typeof candidate.catch === 'function' &&
+		typeof candidate.finally === 'function'
+	)
 }

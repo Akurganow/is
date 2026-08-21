@@ -1,5 +1,7 @@
-import getTag from './get-tag'
+import getTypedArrayTag from './get-typed-array-tag.js'
 
-export default function isBigint64Array(value: unknown): value is BigInt64Array {
-	return getTag(value) === '[object BigInt64Array]'
+export default function isBigint64Array(
+	value: unknown,
+): value is BigInt64Array {
+	return getTypedArrayTag(value) === 'BigInt64Array'
 }

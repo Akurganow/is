@@ -1,8 +1,8 @@
 import { isArguments } from '../src'
 
 describe('isArguments', () => {
-	const args = (function() {
-		// eslint-disable-next-line prefer-rest-params
+	const args = (function () {
+		// biome-ignore lint/complexity/noArguments: a real `arguments` object is exactly what the public isArguments API is tested against
 		return arguments
 	})()
 

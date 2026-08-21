@@ -1,5 +1,5 @@
-import getTag from './get-tag'
-import isObjectLike from './is-object-like'
+import getTag from './get-tag.js'
+import isObjectLike from './is-object-like.js'
 
 /**
  * Checks if a given value is an arguments object.
@@ -11,5 +11,5 @@ import isObjectLike from './is-object-like'
  * @returns {boolean} True if the value is an arguments object, false otherwise.
  */
 export default function isArguments(value: unknown): value is IArguments {
-	return isObjectLike(value) && getTag(value) == '[object Arguments]'
+	return isObjectLike(value) && getTag(value) === '[object Arguments]'
 }

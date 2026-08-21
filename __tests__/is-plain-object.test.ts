@@ -33,7 +33,8 @@ describe('isPlainObject', () => {
 		expect(isPlainObject(array)).toBe(false)
 	})
 	test('returns false for a function', () => {
-		const functionObject = function() {}
+		// biome-ignore lint/complexity/useArrowFunction: a function expression (not an arrow) is deliberately under test
+		const functionObject = function () {}
 
 		expect(isPlainObject(functionObject)).toBe(false)
 	})

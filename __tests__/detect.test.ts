@@ -1,49 +1,47 @@
 import { detect } from '../src'
 
 describe('detect', () => {
-	describe('string',() => tests('string'))
-	describe('number',() => tests('number'))
-	describe('function',() => tests('function'))
-	describe('generatorFunction',() => tests('generatorFunction'))
-	describe('asyncFunction',() => tests('asyncFunction'))
-	describe('object',() => tests('object'))
-	describe('boolean',() => tests('boolean'))
-	describe('undefined',() => tests('undefined'))
-	describe('null',() => tests('null'))
-	describe('array',() => tests('array'))
-	describe('symbol',() => tests('symbol'))
-	describe('bigint',() => tests('bigint'))
-	describe('regexp',() => tests('regexp'))
-	describe('date',() => tests('date'))
-	describe('error',() => tests('error'))
-	describe('map',() => tests('map'))
-	describe('set',() => tests('set'))
-	describe('weakmap',() => tests('weakmap'))
-	describe('weakset',() => tests('weakset'))
-	describe('int8array',() => tests('int8array'))
-	describe('uint8array',() => tests('uint8array'))
-	describe('uint8clampedarray',() => tests('uint8clampedarray'))
-	describe('int16array',() => tests('int16array'))
-	describe('uint16array',() => tests('uint16array'))
-	describe('int32array',() => tests('int32array'))
-	describe('uint32array',() => tests('uint32array'))
-	describe('float32array',() => tests('float32array'))
-	describe('float64array',() => tests('float64array'))
-	describe('bigint64array',() => tests('bigint64array'))
-	describe('biguint64array',() => tests('biguint64array'))
-	describe('arraybuffer',() => tests('arraybuffer'))
-	describe('dataView',() => tests('dataView'))
-	describe('promise',() => tests('promise'))
+	describe('string', () => tests('string'))
+	describe('number', () => tests('number'))
+	describe('function', () => tests('function'))
+	describe('generatorFunction', () => tests('generatorfunction'))
+	describe('asyncFunction', () => tests('asyncfunction'))
+	describe('object', () => tests('object'))
+	describe('boolean', () => tests('boolean'))
+	describe('undefined', () => tests('undefined'))
+	describe('null', () => tests('null'))
+	describe('array', () => tests('array'))
+	describe('symbol', () => tests('symbol'))
+	describe('bigint', () => tests('bigint'))
+	describe('regexp', () => tests('regexp'))
+	describe('date', () => tests('date'))
+	describe('error', () => tests('error'))
+	describe('map', () => tests('map'))
+	describe('set', () => tests('set'))
+	describe('weakmap', () => tests('weakmap'))
+	describe('weakset', () => tests('weakset'))
+	describe('int8array', () => tests('int8array'))
+	describe('uint8array', () => tests('uint8array'))
+	describe('uint8clampedarray', () => tests('uint8clampedarray'))
+	describe('int16array', () => tests('int16array'))
+	describe('uint16array', () => tests('uint16array'))
+	describe('int32array', () => tests('int32array'))
+	describe('uint32array', () => tests('uint32array'))
+	describe('float32array', () => tests('float32array'))
+	describe('float64array', () => tests('float64array'))
+	describe('bigint64array', () => tests('bigint64array'))
+	describe('biguint64array', () => tests('biguint64array'))
+	describe('arraybuffer', () => tests('arraybuffer'))
+	describe('dataView', () => tests('dataview'))
+	describe('promise', () => tests('promise'))
 })
 
-function tests (truthy: string) {
+function tests(truthy: string) {
 	test('function', () => {
 		if (truthy === 'function') {
-			expect(detect(() => {
-			})).toBe(truthy)
+			expect(detect(() => {})).toBe(truthy)
 		} else {
-			expect(detect(() => {
-			})).not.toBe(truthy)
+			expect(detect(() => {})).not.toBe(truthy)
 		}
 	})
 	test('object', () => {
@@ -258,20 +256,16 @@ function tests (truthy: string) {
 	})
 	test('generatorFunction', () => {
 		if (truthy === 'generatorfunction') {
-			expect(detect(function* () {
-			})).toBe(truthy)
+			expect(detect(function* () {})).toBe(truthy)
 		} else {
-			expect(detect(function* () {
-			})).not.toBe(truthy)
+			expect(detect(function* () {})).not.toBe(truthy)
 		}
 	})
 	test('asyncFunction', () => {
 		if (truthy === 'asyncfunction') {
-			expect(detect(async () => {
-			})).toBe(truthy)
+			expect(detect(async () => {})).toBe(truthy)
 		} else {
-			expect(detect(async () => {
-			})).not.toBe(truthy)
+			expect(detect(async () => {})).not.toBe(truthy)
 		}
 	})
 }

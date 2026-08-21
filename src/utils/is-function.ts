@@ -1,6 +1,6 @@
-import getTag from './get-tag'
+import getTag from './get-tag.js'
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
-export default function isFunction (value: unknown): value is Function {
-	return Boolean(value) && getTag(value) === '[object Function]'
+// biome-ignore lint/complexity/noBannedTypes: the broad `Function` type predicate is the published public API of isFunction and must not change
+export default function isFunction(value: unknown): value is Function {
+	return getTag(value) === '[object Function]'
 }

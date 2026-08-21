@@ -14,7 +14,8 @@ describe('getTag', () => {
 		expect(getTag(new Error())).toBe('[object Error]')
 	})
 	test('returns the correct tag for a function', () => {
-		expect(getTag(function() {})).toBe('[object Function]')
+		// biome-ignore lint/complexity/useArrowFunction: a function expression (not an arrow) is deliberately under test
+		expect(getTag(function () {})).toBe('[object Function]')
 	})
 	test('returns the correct tag for a map', () => {
 		expect(getTag(new Map())).toBe('[object Map]')

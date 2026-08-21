@@ -1,4 +1,4 @@
-import getTag from './get-tag'
+import getTag from './get-tag.js'
 
 /**
  * Detects the type of the given value.

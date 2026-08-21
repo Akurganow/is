@@ -5,6 +5,9 @@ describe('isArrayOfSame', () => {
 	test('returns false for an empty array', () => {
 		expect(isArrayOfSame([])).toBe(false)
 	})
+	test('returns true for a single-element array', () => {
+		expect(isArrayOfSame(['a'])).toBe(true)
+	})
 	test('returns true for an array of strings', () => {
 		expect(isArrayOfSame(['a', 'b', 'c'])).toBe(true)
 	})
@@ -15,9 +18,7 @@ describe('isArrayOfSame', () => {
 		expect(isArrayOfSame([true, false, true])).toBe(true)
 	})
 	test('returns true for an array of functions', () => {
-		expect(isArrayOfSame([() => {
-		}, () => {
-		}])).toBe(true)
+		expect(isArrayOfSame([() => {}, () => {}])).toBe(true)
 	})
 	test('returns true for an array of objects', () => {
 		expect(isArrayOfSame([{ a: 1 }, { b: 2 }])).toBe(true)
@@ -51,5 +52,24 @@ describe('isArrayOfSame', () => {
 	})
 	test('returns false for an array of mixed types', () => {
 		expect(isArrayOfSame([1, 'a', true])).toBe(false)
+	})
+	test('returns false for an array of numbers and strings', () => {
+		expect(isArrayOfSame([1, 'a'])).toBe(false)
+	})
+	test('returns false for an array of functions with different detected types', () => {
+		expect(isArrayOfSame([() => {}, async () => {}])).toBe(false)
+	})
+	test('returns false for an array of plain objects and class instances', () => {
+		expect(isArrayOfSame([{}, new Date()])).toBe(false)
+	})
+	test('returns false for non-array input without throwing', () => {
+		expect(() => isArrayOfSame('abc')).not.toThrow()
+		expect(isArrayOfSame('abc')).toBe(false)
+		expect(isArrayOfSame(null)).toBe(false)
+		expect(isArrayOfSame(undefined)).toBe(false)
+		expect(isArrayOfSame({})).toBe(false)
+	})
+	test('returns false for a typed array (only true arrays are accepted)', () => {
+		expect(isArrayOfSame(new Uint8Array(2))).toBe(false)
 	})
 })

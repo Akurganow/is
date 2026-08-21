@@ -1,7 +1,7 @@
 import { isPrimitive } from '../src'
 
 describe('isPrimitive', () => {
-	test('should return true when it\'s null, undefined, string, number, bigint, boolean or symbol', () => {
+	test("should return true when it's null, undefined, string, number, bigint, boolean or symbol", () => {
 		expect(isPrimitive(null)).toBe(true)
 		expect(isPrimitive(undefined)).toBe(true)
 		expect(isPrimitive('string')).toBe(true)
@@ -11,7 +11,7 @@ describe('isPrimitive', () => {
 		expect(isPrimitive(false)).toBe(true)
 		expect(isPrimitive(Symbol())).toBe(true)
 	})
-	test('should return false when it\'s not an primitive', () => {
+	test("should return false when it's not a primitive", () => {
 		expect(isPrimitive({})).toBe(false)
 		expect(isPrimitive([])).toBe(false)
 		expect(isPrimitive(() => {})).toBe(false)

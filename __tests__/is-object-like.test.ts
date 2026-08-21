@@ -21,9 +21,10 @@ describe('isObjectLike', () => {
 	})
 	test('function', () => {
 		expect(isObjectLike(() => {})).toBe(false)
-		expect(isObjectLike(function() {})).toBe(false)
+		// biome-ignore lint/complexity/useArrowFunction: a function expression (not an arrow) is deliberately under test
+		expect(isObjectLike(function () {})).toBe(false)
 		expect(isObjectLike(async () => {})).toBe(false)
-		expect(isObjectLike(function*() {})).toBe(false)
+		expect(isObjectLike(function* () {})).toBe(false)
 	})
 	test('class', () => {
 		expect(isObjectLike(class {})).toBe(false)

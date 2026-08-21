@@ -38,12 +38,30 @@ describe('isArrayOf', () => {
 		expect(isArrayOf([new Error(), new Error()], 'error')).toBe(true)
 	})
 	test('returns true for an array of promises', () => {
-		expect(isArrayOf([Promise.resolve(), Promise.resolve()], 'promise')).toBe(true)
+		expect(isArrayOf([Promise.resolve(), Promise.resolve()], 'promise')).toBe(
+			true,
+		)
 	})
 	test('returns true for an array of nulls', () => {
 		expect(isArrayOf([null, null], 'null')).toBe(true)
 	})
 	test('returns true for an array of undefineds', () => {
 		expect(isArrayOf([undefined, undefined], 'undefined')).toBe(true)
+	})
+	test('returns false for an array with mixed types', () => {
+		expect(isArrayOf(['a', 1], 'string')).toBe(false)
+	})
+	test('returns false when the type does not match', () => {
+		expect(isArrayOf(['a'], 'number')).toBe(false)
+	})
+	test('returns false for non-array input without throwing', () => {
+		expect(() => isArrayOf('abc', 'string')).not.toThrow()
+		expect(isArrayOf('abc', 'string')).toBe(false)
+		expect(isArrayOf(null, 'null')).toBe(false)
+		expect(isArrayOf(undefined, 'undefined')).toBe(false)
+		expect(isArrayOf({}, 'object')).toBe(false)
+	})
+	test('returns false for a typed array (only true arrays are accepted)', () => {
+		expect(isArrayOf(new Int8Array(2), 'number')).toBe(false)
 	})
 })

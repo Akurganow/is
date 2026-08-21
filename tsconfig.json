@@ -3,11 +3,10 @@
 		/* Visit https://aka.ms/tsconfig to read more about this file */
 
 		/* Language and Environment */
-		"target": "esnext",
+		"target": "es2022",
 
 		/* Modules */
 		"module": "node16",
-		"baseUrl": ".",
 		"rootDir": "./src",
 		"moduleResolution": "node16",
 
@@ -16,10 +15,8 @@
 
 		/* Emit */
 		"declaration": true,
-		"declarationMap": true,
-		"sourceMap": true,
 		"outDir": "lib",
-		"newLine": "crlf",
+		"newLine": "lf",
 
 		/* Interop Constraints */
 		"esModuleInterop": true,
@@ -38,11 +35,11 @@
 		"noUnusedParameters": true,
 		"noImplicitReturns": true,
 		"noFallthroughCasesInSwitch": true,
-		"isolatedModules": true
+		"isolatedModules": true,
+
+		/* Types */
+		"types": []
 	},
 	"include": ["src/**/*.ts"],
-	"exclude": [
-		"node_modules",
-		"__tests__"
-	]
+	"exclude": ["node_modules", "__tests__"]
 }
