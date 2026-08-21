@@ -1,4 +1,4 @@
-import getTag from './get-tag'
+import getTag from './get-tag.js'
 
 /**
  * Checks if a given value is an object.

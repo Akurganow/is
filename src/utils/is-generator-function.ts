@@ -1,4 +1,4 @@
-import getTag from './get-tag'
+import getTag from './get-tag.js'
 
 function hasConstructorNamed(value: unknown, name: string): boolean {
 	const ctor = (value as { constructor?: unknown }).constructor

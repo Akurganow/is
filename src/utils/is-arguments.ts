@@ -1,5 +1,5 @@
-import getTag from './get-tag'
-import isObjectLike from './is-object-like'
+import getTag from './get-tag.js'
+import isObjectLike from './is-object-like.js'
 
 /**
  * Checks if a given value is an arguments object.

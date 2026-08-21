@@ -1,6 +1,6 @@
-import isMap from './is-map'
-import isObject from './is-object'
-import isSet from './is-set'
+import isMap from './is-map.js'
+import isObject from './is-object.js'
+import isSet from './is-set.js'
 
 export default function isEmptyObject(value: unknown) {
 	// isObject relies on the value's tag, which a Map/Set subclass can spoof

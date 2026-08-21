@@ -1,4 +1,4 @@
-import getTag from './get-tag'
+import getTag from './get-tag.js'
 
 export default function isPromise<T = unknown>(
 	value: unknown,

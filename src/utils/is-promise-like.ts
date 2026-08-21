@@ -1,4 +1,4 @@
-import isNull from './is-null'
+import isNull from './is-null.js'
 
 export default function isPromiseLike(
 	value: unknown,

@@ -1,4 +1,4 @@
-import isObject from './is-object'
+import isObject from './is-object.js'
 
 /**
  * Checks if a given value is a plain object.

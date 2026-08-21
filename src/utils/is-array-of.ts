@@ -1,5 +1,5 @@
-import isEmptyArray from './is-empty-array'
-import detect from './detect'
+import isEmptyArray from './is-empty-array.js'
+import detect from './detect.js'
 
 /**
  * Checks if a given array contains only elements of a specific type.

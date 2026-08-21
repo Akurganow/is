@@ -5,6 +5,15 @@
 
 Small utility package that provides a set of functions to check if a given argument is of a certain type
 
+## Bundling and tree-shaking
+
+The package ships two builds selected automatically via the `exports` map:
+
+- **ESM** (`import { isString } from '@plq/is'`) — used by modern bundlers (webpack, Rollup, Vite, esbuild) and by Node.js `import`. Combined with `"sideEffects": false`, bundlers tree-shake it per function: importing a single check pulls in only that check and its direct dependencies (a one-import bundle is a few hundred bytes, not the whole library).
+- **CommonJS** (`require('@plq/is')`) — the classic build. A CJS barrel cannot be reliably tree-shaken by bundlers, so bundling through `require` includes the whole library (~a few KB). Prefer `import` when bundle size matters.
+
+Every function is small and self-contained; `detect` in particular depends only on `getTag` (about ten lines total) since v1.6.0.
+
 ## Functions
 
 ### `detect`

@@ -1,4 +1,4 @@
-import detect from './detect'
+import detect from './detect.js'
 
 /**
  * Checks if a given array contains only elements of the same type.

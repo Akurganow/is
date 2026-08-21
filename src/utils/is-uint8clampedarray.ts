@@ -1,4 +1,4 @@
-import getTypedArrayTag from './get-typed-array-tag'
+import getTypedArrayTag from './get-typed-array-tag.js'
 
 export default function isUint8ClampedArray(
 	value: unknown,

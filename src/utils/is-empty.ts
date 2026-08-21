@@ -1,12 +1,12 @@
-import isUndefined from './is-undefined'
-import isNull from './is-null'
-import isEmptyString from './is-empty-string'
-import isEmptyObject from './is-empty-object'
-import isEmptyArray from './is-empty-array'
-import isEmptySet from './is-empty-set'
-import isEmptyMap from './is-empty-map'
+import isUndefined from './is-undefined.js'
+import isNull from './is-null.js'
+import isEmptyString from './is-empty-string.js'
+import isEmptyObject from './is-empty-object.js'
+import isEmptyArray from './is-empty-array.js'
+import isEmptySet from './is-empty-set.js'
+import isEmptyMap from './is-empty-map.js'
 // biome-ignore lint/suspicious/noShadowRestrictedNames: isNaN is the published export name of ./is-nan; the public API must not change
-import isNaN from './is-nan'
+import isNaN from './is-nan.js'
 
 /**
  * Checks if a given value is empty.
