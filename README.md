@@ -685,7 +685,7 @@ npm run build
 
 - [ ] Add new file to `src/utils` folder like `is-object.ts`
 - [ ] Write a function `isObject` in `is-object.ts`
-- [ ] Register it in `src/index.ts`: add `import isObject from './utils/is-object'` and add `isObject` to the consolidated `export { ... }` block (do not use `export { default as ... } from ...` — it breaks Node ESM named imports, see the note at the top of `src/index.ts`)
+- [ ] Register it in `src/index.ts`: add `import isObject from './utils/is-object.js'` (the `.js` extension is required for the ESM build) and add `isObject` to the consolidated `export { ... }` block (do not use `export { default as ... } from ...` — it breaks Node ESM named imports, see the note at the top of `src/index.ts`)
 - [ ] Add new test to `__tests__/type-matrix.test.ts` file like `describe('isObject', () => { tests('object', isObject) })`
 - [ ] Run `npm run lint`
 - [ ] Run `npm run test`
