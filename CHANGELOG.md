@@ -1,4 +1,22 @@
+# Changelog
 
+## [1.7.0](https://github.com/Akurganow/is/compare/v1.6.0...v1.7.0) (2026-08-21)
+
+### Features
+
+* spoof-resistant type checks, working Node ESM named imports ([c45e988](https://github.com/Akurganow/is/commit/c45e98866ef1521b52f80ee7a6f033de9a1e1c98))
+* tree-shakeable ESM build alongside CommonJS ([ea8305c](https://github.com/Akurganow/is/commit/ea8305c1d2a00806123cb43a5c6ac0e2a1f3ed7d))
+
+### Bug Fixes
+
+* audit fixes for utils, runtime-agnostic test suite, README sync ([1087424](https://github.com/Akurganow/is/commit/1087424e4bca2f37e121040b9d8aa82ea2e91ec0))
+* enforce LF line endings via .gitattributes ([aaca148](https://github.com/Akurganow/is/commit/aaca14890f5bdcf6402d4de73f062d1e64cf592b))
+* require the full Promise method surface in isPromise ([d002ea6](https://github.com/Akurganow/is/commit/d002ea6bf71d4bb06bace40102a5e3c6e38249ea))
+* update TypeScript to v5.8.3 to resolve dependency conflicts ([a952ed9](https://github.com/Akurganow/is/commit/a952ed9ae512682f4de1d2b8304a385196715fa3))
+
+### Reverts
+
+* Revert "ci: exclude workflow changes from this push (credential lacks workflows permission; see PR description for the intended workflow diff)" ([5fb4be2](https://github.com/Akurganow/is/commit/5fb4be2bdd9aa6d25543d2f610de91c7eac27833))
 
 ## [1.6.0](https://github.com/Akurganow/is/compare/v1.5.0...v1.6.0) (2023-11-20)
 
