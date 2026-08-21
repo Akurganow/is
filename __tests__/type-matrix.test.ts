@@ -179,9 +179,10 @@ describe('spoofed Symbol.toStringTag', () => {
 		)
 	})
 	test('isPromise returns false for a then-only object spoofed as Promise', () => {
-		expect(
-			isPromise({ [Symbol.toStringTag]: 'Promise', then() {} }),
-		).toBe(false)
+		// biome-ignore lint/suspicious/noThenProperty: the test deliberately builds a thenable to prove the spoof is rejected
+		expect(isPromise({ [Symbol.toStringTag]: 'Promise', then() {} })).toBe(
+			false,
+		)
 	})
 	test('isPromise returns true for a native promise', () => {
 		expect(isPromise(Promise.resolve())).toBe(true)
