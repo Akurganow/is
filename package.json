@@ -92,7 +92,7 @@
 		"@swc/core": "^1.16.1",
 		"@swc/jest": "^0.2.39",
 		"@types/jest": "^30.0.0",
-		"@types/node": "^24.0.0",
+		"@types/node": "^26.0.0",
 		"dotenv-cli": "^11.0.0",
 		"jest": "^30.0.0",
 		"release-it": "^21.0.2",
